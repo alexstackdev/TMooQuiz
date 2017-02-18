@@ -37,7 +37,7 @@
                 <a href="<?=base_url()?>admin/manager_user.html"><i class="fa fa-fw fa-table"></i> Quản lý thành viên</a>
             </li>
             <li class="li-6">
-                <a href="<?=base_url()?>admin/change_pass.html"><i class="fa fa-fw fa-edit"></i> Đổi mật khẩu</a>
+                <a href="<?=base_url()?>admin/profile.html"><i class="fa fa-fw fa-edit"></i> Thông tin cá nhân</a>
             </li>
             
             <li>
