@@ -23,24 +23,11 @@
 					<h3 class="panel-title"><i class="fa fa-bar-chart"></i> Thông tin thi</h3>
 				</div>
 				<div class="panel-body">
-					<p><strong>Tổng: </strong><span id="quiz_cout">0</span></p>
 					<p><strong>Đã làm: </strong><span id="quiz_choosed">0</span></p>
 					<p><strong>Đúng: </strong><span id="quiz_correct">0</span></p>					
 					<p><strong>Điểm: </strong><span id="quiz_scores" class="label label-danger">0.00%</span></p>
 				</div>
-			</div>	
-			<!-- <div class="panel panel-info">
-				<div class="panel-heading">
-					<h3 class="panel-title"><i class="fa fa-list"></i> Danh sách các phần</h3>
-				</div>
-				<div class="panel-body">
-					<div id="section_right"></div>
-					<?php /* foreach ($section as $key => $item) {
-					echo '
-						<p class="section-item" data-id="' .$item->section_id.'" id="section-'.$item->section_id.'" onclick="click_section('.$item->quiz_id.','.$item->section_id.')"> '.$item->section_name. '</p>';
-					} */?>
-				</div>
-			</div> -->
+			</div>
 		</div>
 		<!--Content-->		
 		<div class="quiz col-md-6 col-sm-6 col-xs-12" data-url="<?=base_url()?>index/updateView">
@@ -54,9 +41,9 @@
 				</div>
 				<div class="panel-footer">
 					<div class="control text-center">
-						<button type="submit" class="btn btn-primary" onclick="return previousQuestion()">
+						<button type="submit" class="btn btn-primary" id="btn-prev" onclick="return previousQuestion()">
 							<i class="fa fa-arrow-left"></i> Trước</button>
-						<button type="submit" class="btn btn-primary" onclick="return nextQuestion()">
+						<button type="submit" class="btn btn-primary" id="btn-next" onclick="return nextQuestion()">
 							Tiếp <i class="fa fa-arrow-right"></i></button>
 					<button class="btn btn-primary visible-xs btn-reAnswer" onclick="return reAnswer()">Làm lại câu sai</button>
 					</div>
@@ -83,6 +70,14 @@
 <script>
 	var quiz_id = <?php echo $qs['quiz_id']; ?>;
 	var quiz = <?php echo json_encode($content); //print_r($content);?>;
+	$(document).keydown(function(e) {
+			if (e.keyCode == '39') {
+				$('#btn-next').click();
+			}
+			if (e.keyCode == '37') {
+				$('#btn-prev').click();
+			}
+	})
 </script>
 <script type="text/javascript" src="<?=base_url()?>assets/web/js/quiz.js"></script>
 <?php $this->load->view('layout_web/include/sound_view'); ?>

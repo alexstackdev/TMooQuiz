@@ -1,4 +1,4 @@
-<?php $this->load->view('layout_web/include/header'); ?>
+<?php $this->load->view('layout_web/include/header');?>
 <script>$('body').addClass('body-category');</script>
 <div id="wrapper">
 	<header>	
@@ -24,7 +24,6 @@
 							else { ?>
 								<div class="col-md-6 col-sm-6 col-xs-12">
 									<?php foreach ($quiz_view as $key => $item): ?>
-
 										<?php if ($key % 2 == 0): ?>
 											<div class="quiz-item" id="item-view<?php echo $item->quiz_id;?>" data-url="<?=base_url()?>quiz/<?php echo $item->quiz_id.'/'.$item->quiz_slug ?>.html">
 								  				<a class="quiz-title"  href="<?=base_url()?>quiz/<?php echo $item->quiz_id.'/'.$item->quiz_slug ?>.html?mixed=false" >
@@ -46,7 +45,7 @@
 								  					<?php endif ?>								  					
 								  				</div>								  				
 							  					<div class="meta-time">
-							  						<i class="fa fa-clock-o"></i> Ngày tạo: <?php echo  date('H:i:s d/m/Y',strtotime($item->created)); ?>
+							  						<i class="fa fa-clock-o"></i> Ngày tạo: <?php echo date('d/m/Y',strtotime($item->created)); ?>
 							  					</div>
 								  				<div class="quiz-description">
 								  					<span><i class="fa fa-sticky-note" style="color: #e74c3c;"></i> Mô tả: <?php echo $item->note; ?></span>
@@ -184,7 +183,7 @@
 	</div>
 </div>
 <script>
-	// đảo câu hỏi
+	// đảo câu hỏi ở tab 1
 function mixed_qs($id) {
 	$check = $('#mixed'+$id+'').prop('checked');
 	$url = $('#item-view'+$id+'').attr('data-url');
@@ -196,6 +195,7 @@ function mixed_qs($id) {
 		$('#item-view'+$id+' a').attr('href',$url2);
 	}
 }
+// đảo câu hỏi tab 2
 function mixed_qs1($id) {
 	$check1 = $('#mixed-new'+$id+'').prop('checked');
 	$url = $('#item-new'+$id+'').attr('data-url');

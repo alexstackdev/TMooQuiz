@@ -33,7 +33,7 @@
 								<td><?php $this->mcode->count_quiz($item->user_id); ?></td>
 								<td><?php $this->mcode->count_quiz($item->user_id,false); ?></td>
 								<td>
-									<?php if ($item->permission == 1) {
+									<?php if ($item->permission == 2) {
 										echo 'Quản trị viên';
 									} else {
 										echo '<button type="button" class="btn btn-danger"><i class="fa fa-trash" onclick="delete_user('.$item->user_id.')"></i> Xóa</button>';
@@ -54,8 +54,8 @@
 	var $check = confirm('Bạn chắc chắn muốn xóa user này không? Nhấn Ok để xóa.');
 	if ($check) {
 		$.ajax({
-            url : $url, // Đường dẫn file nhận dữ liệu
-            type : 'POST', // Phương thức gửi dữ liệu
+            url : $url, 
+            type : 'POST', 
             // Các dữ liệu
             data : {
             	user_id : $id               

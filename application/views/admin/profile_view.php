@@ -92,5 +92,5 @@
 		</div>
 	</div>
 </div>
-<?php $this->mcode->set_li_active('li-6'); ?>
+<?php $this->mcode->set_li_active('li-4'); ?>
 <script type="text/javascript" src="<?=base_url()?>assets/admin/js/profile.js""></script>

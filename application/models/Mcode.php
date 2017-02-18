@@ -27,7 +27,7 @@ class Mcode extends CI_Model {
         }
     }
     public function clean($strText) {
-        $str=preg_replace('/<script\b[^>]*>(.*)|<\/script>/i', "Vui lòng không sử dụng script", $strText);
+        $str=preg_replace('/<script\b[^>]*>(.*?)<\/script>|<script\b[^>]*>|<\/script>/', "Không được sử dụng script", $strText);
         return $str;        
     }
     public function hash($text) {
@@ -102,7 +102,7 @@ class Mcode extends CI_Model {
                     $question = new Question;
                     $answer = new Answer;
                     $correct = 0;
-                    $section->section = substr($line, 1) ? htmlentities(substr($line, 1)) : '';
+                    $section->section = substr($line, 1) ? substr($line, 1) : '';
                     continue;
                 }
                 if (strlen($question->question) == 0) {
@@ -127,7 +127,7 @@ class Mcode extends CI_Model {
                         $answer->correct = $correct;
                         $line = substr($line, 1);
                     }
-                    $answer->answer = htmlentities($line);
+                    $answer->answer = $this->replace_qs(htmlspecialchars($line));
                     $question->array_answer[] = $answer;
                     $answer = new Answer;
                 }
@@ -206,7 +206,7 @@ class Mcode extends CI_Model {
         }
         
     }
-
+    
 } // end class
         class Answer{
             public $answer = '';

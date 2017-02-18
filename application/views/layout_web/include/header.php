@@ -6,19 +6,20 @@
     
     <title><?php echo $quiz_info['title'];?> | Ứng dụng tạo và chia sẻ đề thi trắc nghiệm trực tuyến</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <meta itemprop="name" content="><?php echo $quiz_info['title'];?> | Ứng dụng tạo và chia sẻ đề thi trắc nghiệm trực tuyến ">
-    <meta property="og:title" content="><?php echo $quiz_info['title'];?> | Ứng dụng tạo và chia sẻ đề thi trắc nghiệm trực tuyến" />
+    <meta itemprop="name" content="<?php echo $quiz_info['title'];?> | Ứng dụng tạo và chia sẻ đề thi trắc nghiệm trực tuyến ">
     <meta name="revisit-after" content="1 days" />
+    <meta name="author" content="pesthubt.com">
     <meta name="robots" content="INDEX,FOLLOW"/>
     <meta name="keywords" content="TMoo, TMoo trắc nghiệm , TMoo trac nghiem, TMoo pest, tmoo quiz , tmoo trac nghiem quiz , quiz hubt ,tmoo hubt, trac nghiem tmoo ,pest hubt , on thi hubt , on thi trac nghiem hubt, trac nghiem hubt, pest trac nghiem hubt, phan mem on thi trac nghiem hubt, pesthubt"/>
     <meta name="description" content="<?php echo $quiz_info['description']; ?> | TMooQuiz 2.0"/>
     <meta itemprop="description" content="<?php echo $quiz_info['description']; ?> | TMooQuiz 2.0">
     <meta property="og:description" content="<?php echo $quiz_info['description']; ?> | TMooQuiz 2.0" />
-    <meta property="og:title" content="<?php echo $quiz_info['title'];?> | TMooQuiz 2.0"/>
+    <meta property="og:title" content="<?php echo $quiz_info['title'];?> | Ứng dụng tạo và chia sẻ đề thi trắc nghiệm trực tuyến"/>
     <meta itemprop="image" content="http://www.pesthubt.com/libs/logo.png">
     <meta property="og:image" content="http://www.pesthubt.com/libs/logo.png" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="http://www.pesthubt.com/" />
+    <meta property="og:url" content="<?php echo $quiz_info['url'];?>" />
+    <link rel="canonical" href="<?php echo $quiz_info['url']; ?>" />
     <meta property="og:site_name" content="PESTHUBT.COM | Ứng dụng tạo và chia sẻ đề thi trắc nghiệm trực tuyến" />
     <link href="favicon.ico" rel=”shortcut icon” />
     <script src="<?=base_url()?>assets/js/jquery-3.1.1.min.js"></script>
@@ -29,12 +30,20 @@
     <?php if (!empty($current_id)): ?>
         <script type="text/javascript">
         $(function(){
-            $('footer').css('display', 'none');
+            $('footer').html('');
         })
         </script>
     <?php endif ?>
 </head>
 <body>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-88817147-1', 'auto');
+  ga('send', 'pageview');
+</script>
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
       var js, fjs = d.getElementsByTagName(s)[0];

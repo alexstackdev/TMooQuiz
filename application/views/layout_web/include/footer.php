@@ -17,7 +17,7 @@
 		</div>
 		<div class="page-fb col-md-3 col-sm-6 col-xs-12">
 			<h4 class="page-header">Fanpage</h4>
-			<div class="fb-page" data-href="https://www.facebook.com/TMooQuiz/" data-width="300" data-height="200" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/TMooQuiz/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/TMooQuiz/">TMoo Quiz</a></blockquote></div>
+			<div class="fb-page" data-href="https://www.facebook.com/TMooQuiz/"  data-height="200" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/TMooQuiz/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/TMooQuiz/">TMoo Quiz</a></blockquote></div>
 		</div>
 	</div>
 	<div class="container">

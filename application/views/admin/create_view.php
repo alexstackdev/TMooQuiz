@@ -22,8 +22,9 @@
                     </div>
                     <div class="form-group">
                         <label>Nội dung</label>
+                        <div><a data-toggle="modal" href='#modal-id'>Click để xem hướng dẫn cấu trúc đề</a></div>
                         <textarea class="form-control" id="body_create_quiz" rows="18" placeholder="Nhập các câu hỏi của đề thi. Lưu ý nhập đúng cấu trúc đề !"></textarea>
-                    </div>
+                    </div>                    
                     <label>Nhập mã Captcha</label>
                     <div class="form-group">                                            
                         <div class="img-captcha pull-left">                        
@@ -41,4 +42,53 @@
 	</div>
 </div>
 <?php $this->mcode->set_li_active('li-2'); ?>
+<div class="modal fade" id="modal-id">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Cấu trúc đề</h4>
+            </div>
+            <div class="modal-body">
+                <p>- Mỗi câu hỏi cách nhau 1 hoặc nhiều dòng.</p>
+                <p>- 1 câu hỏi có thể có nhiều đáp án.</p>
+                <p>- Đáp án đúng là đáp án có dấu * đằng trước.</p>
+                <p>- Nếu chia nhiều phần thì sử dụng : 'Tên phần . Xem ví dụ sau :</p>
+                <ul>
+                    <li>'Phần A</li>
+                    <li>Câu 1 : Nội dung câu hỏi</li>
+                    <li>Nội dung đáp án 1</li>
+                    <li>*Nội dung đáp án 2</li>
+                    <li>Nội dung đáp án 3</li>
+                    <li>Nội dung đáp án 4</li>
+                </ul>
+                <ul>
+                    <li>Câu 2 : Nội dung câu hỏi</li>
+                    <li>*Nội dung đáp án 1</li>
+                    <li>Nội dung đáp án 2</li>
+                    <li>Nội dung đáp án 3</li>
+                    <li>Nội dung đáp án 4</li>
+                </ul>
+                <ul>
+                    <li>'Phần B</li>
+                    <li>Câu 3 : Nội dung câu hỏi</li>
+                    <li>Nội dung đáp án 1</li>
+                    <li>Nội dung đáp án 2</li>
+                    <li>*Nội dung đáp án 3</li>
+                </ul>
+                <ul>
+                    <li>Câu 4 : Nội dung câu hỏi</li>
+                    <li>Nội dung đáp án 1</li>
+                    <li>Nội dung đáp án 2</li>
+                    <li>Nội dung đáp án 3</li>
+                    <li>Nội dung đáp án 4</li>                    
+                    <li>*Nội dung đáp án 5</li>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
 <script type="text/javascript" src="<?=base_url()?>assets/admin/js/create.js"></script>

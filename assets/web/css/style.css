@@ -68,7 +68,7 @@ body {
 .section-cat .category .cloud-img {
 	height: 46px;
     position: absolute;
-    background: url("/CI/uploads/top_cloud.png");
+    background: url("/2.0/uploads/top_cloud.png");
     width: 100%;
     top: -40px;
 }
@@ -130,9 +130,12 @@ ul.nav-quiz {
 	position: relative;
 	-webkit-transition: all .3s linear;
     transition: all .3s linear;
+    -webkit-box-shadow: 0px 0px 15px 5px rgba(0,0,0,0.41);
+	-moz-box-shadow: 0px 0px 15px 5px rgba(0,0,0,0.41);
+	box-shadow: 0px 0px 15px 5px rgba(0,0,0,0.41);
 }
 .quiz-item .quiz-title {
-	font-size: 1em;
+	font-size: 1.2em;
 	font-weight: 600;
 	line-height: 25px;
 }
@@ -262,8 +265,9 @@ span.sp-false {
 p.question {
 	font-size: 1.3em;
 }
-#section-catalog {
+#section_catalog {
 	max-height: 300px;
+	overflow: auto;
 }
 /**
  * Css header

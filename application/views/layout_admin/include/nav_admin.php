@@ -35,11 +35,7 @@
             </li>
             <li class="li-5">
                 <a href="<?=base_url()?>admin/manager_user.html"><i class="fa fa-fw fa-table"></i> Quản lý thành viên</a>
-            </li>
-            <li class="li-6">
-                <a href="<?=base_url()?>admin/profile.html"><i class="fa fa-fw fa-edit"></i> Thông tin cá nhân</a>
-            </li>
-            
+            </li>            
             <li>
                 <a href="<?=base_url()?>signout"><i class="fa fa-fw fa-times-circle"></i> Đăng xuất</a>
             </li>
