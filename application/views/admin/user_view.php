@@ -18,7 +18,7 @@
 					</thead>
 					<tbody>
 						<?php foreach ($user as $key => $item): ?>
-							<tr>
+							<tr id="<?php echo "id-$item->user_id";?>">
 								<td><?php echo $item->user_id;?></td>
 								<td><?php echo $item->username; ?></td>
 								<td>
@@ -30,13 +30,13 @@
 									}									
 								?>									
 								</td>
-								<td><?php $this->mcode->count_quiz($item->user_id); ?></td>
-								<td><?php $this->mcode->count_quiz($item->user_id,false); ?></td>
+								<td><?php echo $item->total_quiz; ?></td>
+								<td><?php echo $item->total_view; ?></td>
 								<td>
 									<?php if ($item->permission == 2) {
 										echo 'Quản trị viên';
 									} else {
-										echo '<button type="button" class="btn btn-danger"><i class="fa fa-trash" onclick="delete_user('.$item->user_id.')"></i> Xóa</button>';
+										echo '<button type="button" class="btn btn-danger" onclick="delete_user('.$item->user_id.')"><i class="fa fa-trash" ></i> Xóa</button>';
 									}?>								
 								</td>
 							</tr>
@@ -52,6 +52,7 @@
 	function delete_user($id){
 	$url = $('h1.active-title').attr('data-url');
 	var $check = confirm('Bạn chắc chắn muốn xóa user này không? Nhấn Ok để xóa.');
+	$item = $('#id-'+$id+'');
 	if ($check) {
 		$.ajax({
             url : $url, 
@@ -60,11 +61,11 @@
             data : {
             	user_id : $id               
             // Thực thi khi gửi dữ liệu thành công
-            }, success : function(data) {           
-                console.log(data);
-                location.href = '';
+            }, success : function(data) {
+                $item.remove();
             }
         });
 	}
 }
+
 </script>

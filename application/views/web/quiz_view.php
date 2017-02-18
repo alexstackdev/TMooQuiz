@@ -1,6 +1,6 @@
 <?php $this->load->view('layout_web/include/header'); ?>
 <header>	
-	<?php $this->load->view('layout_web/include/nav_quiz_view'); ?>
+	<?php $this->load->view('layout_web/include/nav_quiz_view');?>
 </header>
 <div class="container-fluid">
 	<div class="row">
@@ -26,6 +26,13 @@
 					<p><strong>Đã làm: </strong><span id="quiz_choosed">0</span></p>
 					<p><strong>Đúng: </strong><span id="quiz_correct">0</span></p>					
 					<p><strong>Điểm: </strong><span id="quiz_scores" class="label label-danger">0.00%</span></p>
+				</div>
+				<div class="panel-footer text-center">
+					<script>
+						$fb_url = location.href;
+						$('.fb-like').attr('data-href',$fb_url);
+					</script>				
+					<div class="fb-like" data-href="" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
 				</div>
 			</div>
 		</div>
