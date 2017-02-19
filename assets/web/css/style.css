@@ -415,3 +415,11 @@ li.nav-search {
 	border-top: 2px solid #0e0c0c;
 	padding: 1em;
 }
+
+/* css captcha */
+.img-captcha #Imageid {
+    margin-right: 1em;
+}
+.input-captcha {
+    width: auto;
+}

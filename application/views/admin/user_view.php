@@ -44,6 +44,8 @@
 					</tbody>
 				</table>
 			</div>
+			<div class="clearfix"></div>
+			<div class="pagination-page"><?=$this->pagination->create_links();?></div>
 		<?php endif ?>		
 	</div>
 </div>

@@ -6,8 +6,15 @@ $('#submit_signup').on('click', function() {
     $user_signup = $('#user_signup').val();
     $pass_signup = $('#pass_signup').val();
     $fullname = $('#fullname').val();
+    $capt = $('#captcha').val();
+    $re_capt = $('#re_captcha').val();
+    if ($capt != $re_capt) {
+            // Hiển thị thông báo lỗi
+            $('#formSignup .alert').removeClass('hidden');
+            $('#formSignup .alert').html('Mã captcha không đúng. Vui lòng nhập lại');
+        }
     // Nếu một trong các biến này rỗng
-    if ($user_signup == '' || $pass_signup == '' || $fullname == '')
+    else if ($user_signup == '' || $pass_signup == '' || $fullname == '')
     {
         // Hiển thị thông báo lỗi
         $('#formSignup .alert').removeClass('hidden');

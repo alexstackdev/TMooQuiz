@@ -3,6 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Signup extends Public_Controller {
     function __construct() {
         parent::__construct();
+        $this->load->helper('captcha');
     }
     public function index() {
         if ($this->mcode->admin_logged_in()) {
@@ -13,6 +14,25 @@ class Signup extends Public_Controller {
             'description'   => 'Đăng ký',
             'url'       => base_url().'signup.html'
     		);
+        $vals = array(
+                'word'      => '',
+                'img_path' => 'uploads/captcha/',
+                'img_url' => base_url().'uploads/captcha/',
+                'img_width' => '120',
+                'img_height' => 34,
+                'expiration' => 720,
+                'word_length' => 5,
+                'font_size' => 35,
+                'img_id' => 'Imageid',
+                'pool' => '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
+                'colors' => array(
+                    'background' => array(235, 235, 235),
+                    'border' => array(51, 51, 51),
+                    'text' => array(255, 0, 0),
+                    'grid' => array(255, 255, 255)
+                )
+            );  
+        $this->data['captcha'] = create_captcha($vals);
         $this->view('web/signup_view');
     }
 

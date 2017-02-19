@@ -8,6 +8,7 @@ class MY_Controller extends CI_Controller {
         $this->load->library('session');
         $this->load->database();
         $this->load->model('mcode');
+        $this->load->library('pagination');
         date_default_timezone_set('Asia/Ho_Chi_Minh');
     }
     protected function render($the_view = NULL, $template = 'master') {

@@ -22,7 +22,17 @@
                         <div class="form-group">
                             <label for="fullname">Tên của bạn</label>
                             <input type="text" class="form-control" id="fullname" autocomplete="off" placeholder="VD : Trung Phan, Đỗ Mạnh :v">
-                        </div>                        
+                        </div>
+                        <div class="form-group">
+                            <label>Nhập mã Captcha</label>
+                            <div class="form-group">                                            
+                                <div class="img-captcha pull-left">                        
+                                    <?php echo $captcha['image'];?>
+                                </div>
+                                <input type="text" class="form-control input-captcha" id="captcha" autocomplete="off" placeholder="Nhập mã captcha">
+                                <input type="hidden"  id="re_captcha" class="show-re-captcha" value="<?=$captcha['word'];?>">
+                            </div>
+                        </div>                       
                         <button class="btn btn-primary" id="submit_signup">Đăng ký</button>
                         <input type="reset" value="Làm mới"  class="reset-form btn btn-default">
                         <a href="<?=base_url();?>" class="btn btn-default pull-right">
