@@ -30,7 +30,15 @@
 									}									
 								?>									
 								</td>
-								<td><?php echo $item->total_quiz; ?></td>
+								<td>
+								<?php 
+									if ($userdata['permission'] == 2) {
+										echo '<a href="'.base_url().'admin/manager_user/quiz/'.$item->user_id.'">'.$item->total_quiz.'</a>';
+									} else {
+										echo $item->total_quiz;
+									}
+								?>									
+								</td>
 								<td><?php echo $item->total_view; ?></td>
 								<td>
 									<?php if ($item->permission == 2) {

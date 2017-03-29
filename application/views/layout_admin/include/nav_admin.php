@@ -7,7 +7,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="">TMooQuiz Admin</a>
+        <a class="navbar-brand" href="listquiz.html">TMooQuiz Admin</a>
     </div>
     <!-- Top Menu Items -->
     <ul class="nav navbar-right top-nav">
@@ -15,14 +15,14 @@
             <a href="<?=base_url()?>" title="Về trang chủ"><i class="fa fa-home"></i> Trang Chủ</a>
         </li>
         <li class="user">
-            <a href="#"><i class="fa fa-user"></i> <?php echo $this->session->fullname; ?> <b class="caret"></b></a>
+            <a href="<?=base_url()?>admin/profile.html"><i class="fa fa-user"></i> <?php echo $this->session->fullname; ?></a>
         </li>
     </ul>
     <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
     <div class="navbar-collapse navbar-ex1-collapse collapse" aria-expanded="false" style="height: 1px;">
         <ul class="nav navbar-nav side-nav">
             <li class="li-1 active">
-                <a href="<?=base_url()?>admin.html"><i class="fa fa-fw fa-book"></i> Danh sách đề thi</a>
+                <a href="<?=base_url()?>admin/listquiz.html"><i class="fa fa-fw fa-book"></i> Danh sách đề thi</a>
             </li>
             <li class="li-2">
                 <a href="<?=base_url()?>admin/create.html"><i class="fa fa-fw fa-plus"></i> Tạo đề mới</a>

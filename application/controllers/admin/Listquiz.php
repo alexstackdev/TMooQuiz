@@ -8,7 +8,21 @@ class Listquiz extends Admin_Controller {
     	if ($this->mcode->admin_logged_in()) {
             $user_id = $this->session->user_id;
             //$this->data['user'] = $this->db->query("SELECT * FROM user WHERE user_id = $user_id ")->row_array();
-            $this->data['quiz'] = $this->db->query("SELECT quiz.quiz_id,quiz.title,quiz.quiz_slug,quiz.viewed,quiz.created,category.category FROM quiz JOIN category ON quiz.category_id = category.category_id WHERE user_id = $user_id ")->result();
+            
+            $config['base_url'] = base_url().'admin/listquiz';
+            $config['total_rows'] = $this->db->query("SELECT quiz_id from quiz WHERE user_id = $user_id")->num_rows();
+            $config['per_page'] = 10;
+            $config['use_page_numbers'] = true;
+            $config['suffix'] = '.html';
+            $config['first_url'] = site_url('admin/listquiz');
+            $config['first_link'] = 'Trang đầu';
+            $config['last_link'] = 'Trang cuối';
+            $config['num_links'] = 2;
+            $this->pagination->initialize($config);
+            $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 1;
+            $start = $page*$config['per_page']-$config['per_page'];
+            $limit = $start.",".$config['per_page'];
+            $this->data['quiz'] = $this->db->query("SELECT quiz.quiz_id,quiz.title,quiz.quiz_slug,quiz.viewed,quiz.created,category.category FROM quiz JOIN category ON quiz.category_id = category.category_id WHERE user_id = $user_id ORDER BY created DESC limit $limit")->result();
     		$this->render('admin/listquiz_view');
     	}
     	else

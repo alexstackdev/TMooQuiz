@@ -30,7 +30,7 @@
                         <textarea class="form-control" id="body_edit_quiz" rows="18" placeholder="Nhập các câu hỏi của đề thi. Lưu ý nhập đúng cấu trúc đề !"><?php echo $quiz['quiz_content']; ?></textarea>
                     </div>
                     <button class="btn btn-primary" id="submit_edit_quiz"><i class="fa fa-check-square-o"></i> Lưu</button>
-                    <a href="<?=base_url()?>admin.html">
+                    <a href="<?=base_url()?>admin/listquiz.html">
                         <button type="button" class="btn btn-default"><i class="fa fa-arrow-left"></i> Trở về</button>
                     </a>
                     <br><br>
