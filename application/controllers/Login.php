@@ -4,7 +4,7 @@ class Login extends Public_Controller {
     function __construct() {
         parent::__construct();
     }
-    public function index() {
+    public function index() {            
         if ($this->mcode->admin_logged_in()) {
             redirect('admin/listquiz', 'refresh');
         }
@@ -20,16 +20,17 @@ class Login extends Public_Controller {
     	$username = $this->input->post('username');
     	$pass = $this->input->post('pass');
     	// Các biến chứa code JS về thông báo
-    	$load = "<script>location.reload();</script>";
-		$show_alert = "<script>$('#formSignin #alert').removeClass('hidden');</script>";
-		$hide_alert = "<script>$('#formSignin #alert').addClass('hidden');</script>";
-		$success_alert = "<script>$('#formSignin #alert').attr('class', 'alert alert-success');</script>";
+        $url = $this->session->back;
     	if ($this->mcode->admin_login($username,$pass)) {
-    		echo $show_alert.$success_alert.'Đăng nhập thành công !'.$load;
+            if ($url) {
+                return redirect($url,'refresh');
+            }
+            redirect('admin/listquiz','refresh');
     	}
     	else
     	{
-    		echo $show_alert.'Tài khoản hoặc mật khẩu không đúng ! Vui lòng nhập lại.';
+    		$this->session->set_flashdata('error','Tài khoản hoặc mật khẩu không đúng ! Vui lòng nhập lại.') ;
+            redirect('login','refresh');
     	}
     }
 }

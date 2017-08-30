@@ -10,6 +10,7 @@ class MY_Controller extends CI_Controller {
         $this->load->model('mcode');
         $this->load->library('pagination');
         $this->load->driver('cache',array('adapter' => 'apc', 'backup' => 'file'));
+        $this->load->library('user_agent');
         date_default_timezone_set('Asia/Ho_Chi_Minh');
     }
     protected function render($the_view = NULL, $template = 'master') {

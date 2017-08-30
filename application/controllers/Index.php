@@ -19,7 +19,7 @@ class Index extends Public_Controller {
 
     public function category($slug = "")
     {
-        //$this->output->cache(30);
+        $this->session->set_userdata('back',current_url());
         $sql_cat = "select * from category";        
 
     	$this->data['list_category'] = $this->mcode->get_cache_data('list_category',$sql_cat,1);
@@ -43,6 +43,7 @@ class Index extends Public_Controller {
 
     public function quiz($id = '', $slug = '')
     {
+        $this->session->set_userdata('back',current_url());
         $sql_qs = "SELECT *,quiz.created FROM quiz JOIN user ON quiz.user_id=user.user_id JOIN category ON quiz.category_id = category.category_id WHERE quiz_id =' $id  ' AND quiz_slug='$slug' ";
     	$this->data['qs'] = $this->mcode->get_cache_data($id,$sql_qs,0);    	
     	

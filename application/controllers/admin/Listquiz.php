@@ -23,7 +23,7 @@ class Listquiz extends Admin_Controller {
             $start = $page*$config['per_page']-$config['per_page'];
             $limit = $start.",".$config['per_page'];
             $this->data['quiz'] = $this->db->query("SELECT quiz.quiz_id,quiz.title,quiz.quiz_slug,quiz.viewed,quiz.created,quiz.status,category.category FROM quiz JOIN category ON quiz.category_id = category.category_id WHERE user_id = $user_id ORDER BY created DESC limit $limit")->result();
-    		$this->render('admin/listquiz_view');
+    		$this->render('admin/quiz/listquiz_view');
     	}
     	else
     	{
@@ -35,7 +35,7 @@ class Listquiz extends Admin_Controller {
         if ($this->mcode->admin_logged_in()) {
             $this->data['cat'] = $this->db->query("SELECT * FROM category")->result();
             $this->data['quiz'] = $this->db->query("SELECT * FROM quiz WHERE quiz_id = $id ")->row_array();
-            $this->render('admin/edit_view');
+            $this->render('admin/quiz/edit_view');
         }
         else
         {

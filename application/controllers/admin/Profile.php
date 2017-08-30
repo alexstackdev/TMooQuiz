@@ -10,7 +10,7 @@ class Profile extends Admin_Controller {
             $user_id = $this->session->user_id;
             $this->data['quiz'] = $this->db->query("SELECT Count(quiz_id) as total_quiz, SUM(viewed) as total_view FROM quiz WHERE user_id = $user_id")->row_array();
             $this->data['user'] = $this->db->query("SELECT * FROM user WHERE user_id = $user_id ")->row_array();
-            $this->render('admin/profile_view');
+            $this->render('admin/profile/profile_view');
         }
         else
         {

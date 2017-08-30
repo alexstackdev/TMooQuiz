@@ -19,7 +19,7 @@ class Upload extends Admin_Controller {
     	if ($this->mcode->admin_logged_in()) {
     	$this->data['quiz'] = $this->db->query("SELECT quiz_id,title FROM quiz WHERE quiz_id = $quiz_id")->row_array();
     	$this->data['url_img'] = 'uploads/img/'.$quiz_id;     	
-    	$this->render('admin/upload_img_view');	
+    	$this->render('admin/upload/upload_img_view');	
     	}
     	else
     	{

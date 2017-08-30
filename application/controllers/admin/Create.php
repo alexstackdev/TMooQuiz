@@ -6,6 +6,7 @@ class Create extends Admin_Controller {
         $this->load->helper('captcha');
     }
     public function index() {
+        $this->session->set_userdata('back',current_url());
     	if ($this->mcode->admin_logged_in()) {
             $this->data['cat'] = $this->db->query("SELECT category FROM category")->result();
             $vals = array(
@@ -27,7 +28,7 @@ class Create extends Admin_Controller {
                 )
             );  
             $this->data['captcha'] = create_captcha($vals);
-    		$this->render('admin/create_view');
+    		$this->render('admin/quiz/create_view');
     	}
     	else
     	{

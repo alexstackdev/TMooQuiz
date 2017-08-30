@@ -22,7 +22,7 @@ class Manager_user extends Admin_Controller {
             $start = $page*$config['per_page']-$config['per_page'];
             $limit = $start.",".$config['per_page'];
             $this->data['user'] = $this->db->query("SELECT user.user_id,username,fullname,permission,fb, Count(quiz_id) as total_quiz , Sum(viewed) as total_view FROM user LEFT JOIN quiz ON user.user_id = quiz.user_id GROUP BY user.user_id ORDER BY total_quiz  DESC limit $limit")->result();
-            $this->render('admin/user_view');
+            $this->render('admin/manager/user_view');
         }
         else
         {
@@ -41,7 +41,7 @@ class Manager_user extends Admin_Controller {
         if ($user == 2 ) {
             $this->data['quiz'] = $this->db->query("SELECT quiz.quiz_id,quiz.title,quiz.quiz_slug,quiz.viewed,quiz.created,category.category FROM quiz JOIN category ON quiz.category_id = category.category_id WHERE user_id = $user_id ")->result();
             $this->data['user'] = $this->db->query("SELECT fullname FROM user WHERE user_id = $user_id")->row_array();
-            $this->render('admin/user_quiz');
+            $this->render('admin/manager/user_quiz');
         } else {
             redirect('admin','refresh');
         }
@@ -57,7 +57,7 @@ class Manager_user extends Admin_Controller {
         if ($this->mcode->admin_logged_in()) {
             $this->data['quiz'] = $this->db->query("SELECT quiz_id,title,quiz_slug FROM quiz WHERE check_quiz = 2")->result();
             //print_r($this->data['quiz']);
-            $this->render('admin/check_quiz');
+            $this->render('admin/manager/check_quiz');
         } else {
             redirect('login','refresh');
         }

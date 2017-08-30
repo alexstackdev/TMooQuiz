@@ -5,7 +5,11 @@ class Signout extends Public_Controller {
         parent::__construct();
     }
     public function index() {
+    	$url = $this->session->back;
         $this->session->sess_destroy();
+        if ($url) {
+            return redirect($url,'refresh');
+        }
         redirect('login', 'refresh');
     }
 }

@@ -7,7 +7,7 @@ class Notification extends Admin_Controller {
 
     public function popup(){
     	if ($this->session->permission == 2) {
-    		$this->render('admin/notif_popup');
+    		$this->render('admin/notif/notif_popup');
     	} else {
     		redirect('admin/listquiz','refresh');
     	} 

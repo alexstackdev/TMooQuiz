@@ -26,6 +26,7 @@ $('#submit_signin').on('click', function() {
             // Thực thi khi gửi dữ liệu thành công
             }, success : function(data) {
                 $('#formSignin #alert').html(data);
+                console.log(data);
             }
         });
     }

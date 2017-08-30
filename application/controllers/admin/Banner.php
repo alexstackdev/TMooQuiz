@@ -8,7 +8,7 @@ class Banner extends Admin_Controller {
     public function index(){
     	if ($this->mcode->admin_logged_in()) {
     		$this->data['banner'] = $this->db->query("SELECT * FROM banner")->result();
-    		$this->render('admin/banner_view');
+    		$this->render('admin/banner/banner_view');
     	} else {
     		redirect('login','refresh');
     	}
@@ -17,7 +17,7 @@ class Banner extends Admin_Controller {
 
     public function create(){
     	if ($this->session->permission == 2) {
-    		$this->render('admin/banner_create');
+    		$this->render('admin/banner/banner_create');
     	} else {
     		redirect('admin/listquiz','refresh');
     	}    	
@@ -60,7 +60,7 @@ class Banner extends Admin_Controller {
     	if ($this->session->permission == 2) {
     		$this->data['banner'] = $this->db->query("SELECT * FROM banner WHERE banner_id = $id")->row_array();
     		$this->data['position'] = $this->db->query("SELECT banner_position FROM position WHERE banner_id = $id")->result();
-    		$this->render('admin/banner_edit');
+    		$this->render('admin/banner/banner_edit');
     	} else {
     		redirect('admin/listquiz','refresh');
     	} 
