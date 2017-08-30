@@ -34,6 +34,10 @@ class Index extends Public_Controller {
     {
     	$this->data['qs'] = $this->db->query("SELECT *,quiz.created FROM quiz JOIN user ON quiz.user_id=user.user_id JOIN category ON quiz.category_id = category.category_id WHERE quiz_id =' $id  ' AND quiz_slug='$slug' ")->row_array();    	
     	$this->data['section'] = $this->db->query("SELECT * FROM section WHERE quiz_id='$id' ")->result();
+        $a = null;
+        $sql_qs = "SELECT *,quiz.created FROM quiz JOIN user ON quiz.user_id=user.user_id JOIN category ON quiz.category_id = category.category_id WHERE quiz_id =' $id  ' AND quiz_slug='$slug' ";
+    	$this->data['qs'] = $this->mcode->get_cache_data($id,$sql_qs,0);
+
         $content = $this->mcode->toQuiz($this->data['qs']['quiz_content']);
         $check = $this->input->get('mixed');
         if ($check == 'true') {
