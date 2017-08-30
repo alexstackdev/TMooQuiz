@@ -15,8 +15,8 @@
     <meta itemprop="description" content="<?php echo $quiz_info['description']; ?> | TMooQuiz 2.0">
     <meta property="og:description" content="<?php echo $quiz_info['description']; ?> | TMooQuiz 2.0" />
     <meta property="og:title" content="<?php echo $quiz_info['title'];?> | Ứng dụng tạo và chia sẻ đề thi trắc nghiệm trực tuyến"/>
-    <meta itemprop="image" content="http://www.pesthubt.com/libs/logo.png">
-    <meta property="og:image" content="http://www.pesthubt.com/libs/logo.png" />
+    <meta itemprop="image" content="<?=base_url()?>uploads/logo.png">
+    <meta property="og:image" content="<?=base_url()?>uploads/logo.png" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="<?php echo $quiz_info['url'];?>" />
     <link rel="canonical" href="<?php echo $quiz_info['url']; ?>" />
@@ -34,6 +34,34 @@
         })
         </script>
     <?php endif ?>
+    <?php if ($data_user['vip'] != 1): ?>
+      <!-- Popunder Code-->
+      <script type="text/javascript" data-cfasync="false">
+      /*<![CDATA[/* */
+        var _pop = _pop || [];
+        _pop.push(['siteId', 2073430]);
+        _pop.push(['minBid', 0]);
+        _pop.push(['popundersPerIP', 50]);
+        _pop.push(['delayBetween', 1800]);
+        _pop.push(['default', false]);
+        _pop.push(['defaultPerDay', 0]);
+        _pop.push(['topmostLayer', false]);
+        (function() {
+          var pa = document.createElement('script'); pa.type = 'text/javascript'; pa.async = true;
+          var s = document.getElementsByTagName('script')[0]; 
+          pa.src = '//c1.popads.net/pop.js';
+          pa.onerror = function() {
+            var sa = document.createElement('script'); sa.type = 'text/javascript'; sa.async = true;
+            sa.src = '//c2.popads.net/pop.js';
+            s.parentNode.insertBefore(sa, s);
+          };
+          s.parentNode.insertBefore(pa, s);
+        })();
+      /*]]>/* */
+      </script>
+      <!-- PopAds.net Popunder Code End -->
+    <?php endif ?>
+    
 </head>
 <body>
 <script>

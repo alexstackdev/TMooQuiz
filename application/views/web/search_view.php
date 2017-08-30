@@ -8,6 +8,10 @@
 		<div class="container-fluid">
 			<h1 class="title page-header"><span>Từ khóa tìm kiếm : <?php echo $key; ?></span></h1>
 			<div class="row">
+				<div class="banner-category-1 text-center" style="margin-bottom: 1em; ">
+							<!-- <script src="//www.adsptp.com/15039-468x60.js"></script> -->
+								<?php $this->mcode->get_banner(1); ?>					
+						</div>
 				<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
 					<?php if ($result == null): ?>
 						<div class="alert alert-danger">Không tìm thấy kết quả. Vùi lòng tìm từ khóa khác !</div>				

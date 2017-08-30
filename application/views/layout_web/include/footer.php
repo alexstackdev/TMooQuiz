@@ -1,4 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');?>
+<div class="baner-footer-4 hidden-sm hidden-md hidden-lg" style="margin-bottom: 1em;">
+	<?php $this->mcode->get_banner(4); ?>
+</div>
 <footer class="footer-content">
 	<div class="container">
 		<div class="page-info col-md-3 col-sm-6 col-xs-12">
@@ -8,7 +11,7 @@
 		<div class="page-contact col-md-3 col-sm-6 col-xs-12">
 			<h4 class="page-header">Liên hệ</h4>
 			<div>
-				<p><i class="fa fa-envelope-o"></i> Gmail : tmooquiz@gmail.com</p>
+				<p><i class="fa fa-envelope-o"></i> Gmail : phantrung696@gmail.com</p>
 				<p><i class="fa fa-facebook-square"></i> Fanpage : <a href="https://www.facebook.com/TMooQuiz/" title="Fanpage">TMooQuiz</a></p>
 			</div>
 		</div>

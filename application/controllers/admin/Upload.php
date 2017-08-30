@@ -51,7 +51,8 @@ class Upload extends Admin_Controller {
 		            	if ($list_img['type'][$i] == "image/jpeg" ||
 		            		$list_img['type'][$i] == "image/jpg" ||
 		            		$list_img['type'][$i] == "image/png" ||
-		                    $list_img['type'][$i] == "image/bmp")
+		                    $list_img['type'][$i] == "image/bmp" ||
+		                    $list_img['type'][$i] == "image/gif")
 		            	{
 		            		if ($list_img['size'][$i] > 524288) {
 		            			echo $list_img['name'][$i].' dung lượng vượt quá 500kb. Vui lòng nén ảnh rồi upload lại! <br>';

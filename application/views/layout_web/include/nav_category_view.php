@@ -18,6 +18,28 @@
             <li class="user">
                 <a href="<?=base_url()?>admin/listquiz.html" title="Trang quản trị"><i class="fa fa-user"></i> <?php echo $this->session->fullname; ?></a>
             </li>
+            <?php if ($data_user['permission'] == 2): ?>
+                <li class="user dropdown "  >
+                    <a href="#" data-toggle="dropdown">
+                        <i class="fa fa-user"></i> <?php echo $data_user['fullname']; ?> <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                        <li class="dropdown-item" >
+                            <a href="#">
+                                <i class="fa fa-credit-card"></i> Số tiền : <?php echo $data_user['balance'].' VND'; ?>
+                            </a>                    
+                        </li>
+                        <li class="dropdown-item">
+                            <a href="#">
+                                <i class="fa fa-bank"></i> Nạp tiền
+                            </a>
+                        </li>
+                        <li class="li-4 dropdown-item" >
+                            <a href="<?=base_url()?>admin/profile.html"><i class="fa fa-fw fa-address-card-o"></i> Thông tin cá nhân</a>
+                        </li>
+                    </ul>
+                </li>
+            <?php endif ?>  
             <li class="logout">
                 <a href="<?=base_url()?>signout.html"><i class="fa fa-sign-out"></i> Đăng xuất</a>
             </li>

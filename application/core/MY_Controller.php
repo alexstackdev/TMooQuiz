@@ -9,6 +9,7 @@ class MY_Controller extends CI_Controller {
         $this->load->database();
         $this->load->model('mcode');
         $this->load->library('pagination');
+        $this->load->driver('cache',array('adapter' => 'apc', 'backup' => 'file'));
         date_default_timezone_set('Asia/Ho_Chi_Minh');
     }
     protected function render($the_view = NULL, $template = 'master') {
@@ -41,6 +42,7 @@ class MY_Controller extends CI_Controller {
 class Admin_Controller extends MY_Controller {
     function __construct() {
         parent::__construct();
+        $this->data['data_user'] = $this->mcode->get_data_user();
     }
     protected function render($the_view = NULL, $template = 'master') {
         parent::render($the_view, $template);
@@ -48,7 +50,8 @@ class Admin_Controller extends MY_Controller {
 }
 class Public_Controller extends MY_Controller {
     function __construct() {
-        parent::__construct();            
+        parent::__construct();
+        $this->data['data_user'] = $this->mcode->get_data_user();          
     }
 
     protected function view($the_view = NULL, $template = 'master') {

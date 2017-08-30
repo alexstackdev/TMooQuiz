@@ -8,7 +8,7 @@
 			<h1>
 				<span class="t-one">Tạo và</span><span class="t-two">chia sẻ</span><span class="t-three">đề thi trắc nghiệm</span><span class="t-four">trực tuyến</span>
 			</h1>
-		</div>
+		</div>		
 		<div class="search-form col-md-offset-2 col-md-8">
 			<form action="<?=base_url()?>search.html" method="get" role="search" accept-charset="utf-8">
 				<div class="input-group">
@@ -17,7 +17,14 @@
 				        <button type="submit" class="btn btn-primary"   id="open_file" ><span class="glyphicon glyphicon-search"></span> Tìm kiếm</button>
 			        </span>
 		        </div>				
-			</form>			
+			</form>
+			<div class="banner-homepage-1" style="margin-top: 1em;">
+				<?php if ($data_user['vip'] != 1): ?>
+					<script src="//www.adsptp.com/15039-728x90.js"></script>
+					<?php $this->mcode->get_banner(1); ?>
+				<?php endif ?>				
+				
+			</div>		
 		</div>
 		<section class="section-cat">
 			<div class="category col-md-12 col-sm-12 col-xs-12">
@@ -40,3 +47,21 @@
 		</section>
 	</div>
 </div>
+<script type="text/javascript" charset="utf-8" async defer>
+	$color = ['#1abc9c','#2ecc71','#3498db','#9b59b6','#f1c40f','#e67e22','#e74c3c','#f39c12','#d35400','#c0392b','#27ae60','#2980b9'];
+	$color.sort(function(){ return Math.random()-0.5; });
+	$category = $('.cat-name');
+	$category.each(function(){
+		$(this).css('border-color',$color[0]);
+		
+		$(this).hover(function() {
+			/* Stuff to do when the mouse enters the element */
+			$css = $(this).css('border-color');
+			$(this).css('background',$css);
+		}, function() {
+			/* Stuff to do when the mouse leaves the element */
+			$(this).css('background','#fff');
+		});
+		$color.shift();
+	})
+</script>

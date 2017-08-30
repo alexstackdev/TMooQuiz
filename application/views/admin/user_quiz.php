@@ -22,9 +22,13 @@
 								<td><?php echo '<a href="'.base_url().'quiz/'.$item->quiz_id.'/'.$item->quiz_slug.'.html">'.$item->title.'</a>' ; ?></td>
 								<td><?php echo $item->viewed; ?></td>
 								<td>
-									<?php  
+									<?php
+									$url = base_url()."admin/listquiz/edit/$item->quiz_id.html";
 									echo '
-									<button type="button" class="btn btn-primary"><i class="fa fa-edit" ></i> Sửa</button>
+									<a href="'.$url.'" class="edit_quiz"><button type="button" class="btn btn-primary">
+		  								<i class="fa fa-edit"></i> Chỉnh sửa
+		  								</button>
+		  							</a>
 									<button type="button" class="btn btn-danger" onclick="delete_quiz('.$item->quiz_id.')"><i class="fa fa-trash" ></i> Xóa</button>';
 									?>								
 								</td>
