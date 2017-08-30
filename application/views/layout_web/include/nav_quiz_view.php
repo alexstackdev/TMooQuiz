@@ -37,7 +37,7 @@
                     </li>
                     <?php if ($this->mcode->admin_logged_in()): ?>
                         <li class="user">
-                            <a href="<?=base_url()?>admin/listquiz.html" title="Trang quản trị"><i class="fa fa-user"></i> <?php echo $this->session->fullname; ?></a>
+                            <a href="<?=base_url()?>admin.html" title="Trang quản trị"><i class="fa fa-user"></i> <?php echo $this->session->fullname; ?></a>
                         </li>
                         <li class="logout">
                             <a href="<?=base_url()?>signout.html"><i class="fa fa-sign-out"></i> Đăng xuất</a>
