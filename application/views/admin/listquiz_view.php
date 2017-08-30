@@ -5,6 +5,7 @@
 			<div class="alert alert-danger">Bạn chưa có đề thi nào !</div>
 		<?php }
 			else { ?>
+<<<<<<< HEAD
 				<div class="row">
 					<?php foreach ($quiz as $key => $item): ?>
 						<div class="col-md-4 col-sm-6 col-xs-12">
@@ -26,6 +27,32 @@
 			  					</div>
 			  					<div class="panel-footer action">			  						
 		  							<a href="<?=base_url()?>admin/listquiz/edit/<?php echo $item->quiz_id.'.html'; ?>" class="edit_quiz"><button type="button" class="btn btn-primary">
+=======
+	  			<div class="table-responsive">
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th>ID</th>
+								<th>Tên</th>
+								<th>Danh mục</th>
+								<th>Lượt xem</th>
+								<th>Ngày tạo</th>
+								<th>Hành động</th>
+							</tr>
+						</thead>
+						<tbody>
+						<?php foreach ($quiz as $key => $item): ?>
+							<tr>
+								<td><?php echo $item->quiz_id; ?></td>
+								<td>
+									<a href="<?=base_url()?>quiz/<?php echo $item->quiz_id.'/'.$item->quiz_slug ?>.html"><?php echo $item->title; ?></a>
+								</td>
+								<td><?php echo $item->category; ?></td>
+								<td><?php echo $item->viewed ?></td>
+								<td><?php echo date('d/m/Y',strtotime($item->created)); ?></td>
+								<td>
+									<a href="<?=base_url()?>admin/listquiz/edit/<?php echo $item->quiz_id.'.html'; ?>" class="edit_quiz"><button type="button" class="btn btn-primary">
+>>>>>>> parent of e250767... update 1
 		  								<i class="fa fa-edit"></i> Chỉnh sửa
 		  								</button>
 		  							</a>

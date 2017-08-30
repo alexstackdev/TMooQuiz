@@ -15,7 +15,11 @@
             <a href="<?=base_url()?>" title="Về trang chủ"><i class="fa fa-home"></i> Trang Chủ</a>
         </li>
         <li class="user">
+<<<<<<< HEAD
             <a href="#"><i class="fa fa-user"></i> <?php echo $this->session->fullname; ?> <b class="caret"></b></a>
+=======
+            <a href="<?=base_url()?>admin/profile.html"><i class="fa fa-user"></i> <?php echo $this->session->fullname; ?></a>
+>>>>>>> parent of e250767... update 1
         </li>
     </ul>
     <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->

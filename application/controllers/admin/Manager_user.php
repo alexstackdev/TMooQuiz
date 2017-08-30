@@ -10,7 +10,7 @@ class Manager_user extends Admin_Controller {
             $this->data['userdata'] = $this->session->userdata;
             $config['base_url'] = base_url().'admin/manager_user';
             $config['total_rows'] = $this->db->query("SELECT user_id from user")->num_rows();
-            $config['per_page'] = 10;
+            $config['per_page'] = 1;
             $config['use_page_numbers'] = true;
             $config['suffix'] = '.html';
             $config['first_url'] = site_url('admin/manager_user');
@@ -35,4 +35,23 @@ class Manager_user extends Admin_Controller {
         $this->db->where("user_id", $user_id)->delete("user");
         $this->db->where("user_id", $user_id)->delete("quiz");
     }
+<<<<<<< HEAD
+=======
+
+    public function quiz($user_id){
+        $user = $this->session->permission;
+        if ($user == 2 ) {
+            $this->data['quiz'] = $this->db->query("SELECT quiz.quiz_id,quiz.title,quiz.quiz_slug,quiz.viewed,quiz.created,category.category FROM quiz JOIN category ON quiz.category_id = category.category_id WHERE user_id = $user_id ")->result();
+            $this->render('admin/user_quiz');
+        } else {
+            # code...
+        }
+        
+    }
+
+    public function delete_quiz(){
+        $quiz_id = $this->input->post('quiz_id');
+        $this->db->where("quiz_id", $quiz_id)->delete("quiz");
+    }
+>>>>>>> parent of e250767... update 1
 }
