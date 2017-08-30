@@ -43,6 +43,7 @@ class Index extends Public_Controller {
 
     public function quiz($id = '', $slug = '')
     {
+        $a = null;
         $sql_qs = "SELECT *,quiz.created FROM quiz JOIN user ON quiz.user_id=user.user_id JOIN category ON quiz.category_id = category.category_id WHERE quiz_id =' $id  ' AND quiz_slug='$slug' ";
     	$this->data['qs'] = $this->mcode->get_cache_data($id,$sql_qs,0);    	
     	
