@@ -5,15 +5,6 @@
 			<div class="alert alert-danger">Bạn chưa có đề thi nào !</div>
 		<?php }
 			else { ?>
-				<?php if ($this->session->permission == 2): ?>
-					<div class="new-cat" style="margin-bottom: 10px;">
-						<a href="<?=base_url()?>admin/manager_user/check_quiz.html">
-						<button type="button" class="btn btn-success">
-			  				Check quiz							
-			  			</button>
-			  			</a>
-			  		</div>
-				<?php endif ?>				
 	  			<div class="table-responsive">
 					<table class="table table-hover">
 						<thead>
@@ -23,7 +14,6 @@
 								<th>Danh mục</th>
 								<th>Lượt xem</th>
 								<th>Ngày tạo</th>
-								<th>Trạng thái</th>
 								<th>Hành động</th>
 							</tr>
 						</thead>
@@ -37,14 +27,6 @@
 								<td><?php echo $item->category; ?></td>
 								<td><?php echo $item->viewed ?></td>
 								<td><?php echo date('d/m/Y',strtotime($item->created)); ?></td>
-								<td>
-									<?php if ($item->status == 1) {
-										echo 'Công khai';
-									} else {
-										echo 'Không công khai';
-									}
-									 ?>
-								</td>
 								<td>
 									<a href="<?=base_url()?>admin/listquiz/edit/<?php echo $item->quiz_id.'.html'; ?>" class="edit_quiz"><button type="button" class="btn btn-primary">
 		  								<i class="fa fa-edit"></i> Chỉnh sửa

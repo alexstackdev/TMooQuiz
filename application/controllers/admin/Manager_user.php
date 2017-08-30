@@ -10,7 +10,7 @@ class Manager_user extends Admin_Controller {
             $this->data['userdata'] = $this->session->userdata;
             $config['base_url'] = base_url().'admin/manager_user';
             $config['total_rows'] = $this->db->query("SELECT user_id from user")->num_rows();
-            $config['per_page'] = 10;
+            $config['per_page'] = 1;
             $config['use_page_numbers'] = true;
             $config['suffix'] = '.html';
             $config['first_url'] = site_url('admin/manager_user');
@@ -40,10 +40,9 @@ class Manager_user extends Admin_Controller {
         $user = $this->session->permission;
         if ($user == 2 ) {
             $this->data['quiz'] = $this->db->query("SELECT quiz.quiz_id,quiz.title,quiz.quiz_slug,quiz.viewed,quiz.created,category.category FROM quiz JOIN category ON quiz.category_id = category.category_id WHERE user_id = $user_id ")->result();
-            $this->data['user'] = $this->db->query("SELECT fullname FROM user WHERE user_id = $user_id")->row_array();
             $this->render('admin/user_quiz');
         } else {
-            redirect('admin','refresh');
+            # code...
         }
         
     }
@@ -51,15 +50,5 @@ class Manager_user extends Admin_Controller {
     public function delete_quiz(){
         $quiz_id = $this->input->post('quiz_id');
         $this->db->where("quiz_id", $quiz_id)->delete("quiz");
-    }
-
-    public function check_quiz(){
-        if ($this->mcode->admin_logged_in()) {
-            $this->data['quiz'] = $this->db->query("SELECT quiz_id,title,quiz_slug FROM quiz WHERE check_quiz = 2")->result();
-            //print_r($this->data['quiz']);
-            $this->render('admin/check_quiz');
-        } else {
-            redirect('login','refresh');
-        }
     }
 }

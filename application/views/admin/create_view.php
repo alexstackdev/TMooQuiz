@@ -33,13 +33,6 @@
                         <input type="text" class="form-control input-captcha" id="captcha" autocomplete="off" placeholder="Nhập mã captcha">
                         <input type="hidden"  id="re_captcha" class="show-re-captcha" value="<?=$captcha['word'];?>">
                     </div>
-                    <div class="form-group">
-                        <label>Status</label>
-                        <select id="status" class="col-md-6 col-sm-6 col-xs-12" style="display: block;float: none !important;height: 30px;">
-                            <option value="2">Không công khai</option>                 
-                            <option value="1">Công khai</option>
-                        </select>
-                    </div>
                     <button class="btn btn-primary" id="submit_create_quiz"><i class="fa fa-check-square-o"></i> Ok</button>
                     <input type="reset" class="rs hidden" value="">
                      <div class="alert alert-danger hidden"></div>
@@ -60,11 +53,10 @@
                 <p>- Mỗi câu hỏi cách nhau 1 hoặc nhiều dòng.</p>
                 <p>- 1 câu hỏi có thể có nhiều đáp án.</p>
                 <p>- Đáp án đúng là đáp án có dấu * đằng trước.</p>
-                <p>- Nếu câu hỏi có ảnh thì để tên ảnh ở ngay cuối câu hỏi</p>
                 <p>- Nếu chia nhiều phần thì sử dụng : 'Tên phần . Xem ví dụ sau :</p>
                 <ul>
                     <li>'Phần A</li>
-                    <li>Câu 1 : Nội dung câu hỏi <?php echo htmlentities('<abc.jpg>'); ?></li>
+                    <li>Câu 1 : Nội dung câu hỏi</li>
                     <li>Nội dung đáp án 1</li>
                     <li>*Nội dung đáp án 2</li>
                     <li>Nội dung đáp án 3</li>

@@ -14,23 +14,8 @@
         <li>
             <a href="<?=base_url()?>" title="Về trang chủ"><i class="fa fa-home"></i> Trang Chủ</a>
         </li>
-        <li class="user dropdown "  >
-            <a href="<?=base_url()?>admin/profile.html" data-toggle="dropdown">
-                <i class="fa fa-user"></i> <?php echo $data_user['fullname']; ?> <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                <li class="dropdown-item" >
-                    <a href="#">
-                        <i class="fa fa-credit-card"></i> Số tiền : <?php echo $data_user['balance'].' VND'; ?>
-                    </a>                    
-                </li>
-                <li class="li-4 dropdown-item" >
-                    <a href="<?=base_url()?>admin/profile.html"><i class="fa fa-fw fa-address-card-o"></i> Thông tin cá nhân</a>
-                </li>
-                <li class="dropdown-item">
-                    <a href="<?=base_url()?>signout"><i class="fa fa-fw fa-times-circle"></i> Đăng xuất</a>
-                </li>
-            </ul>
+        <li class="user">
+            <a href="<?=base_url()?>admin/profile.html"><i class="fa fa-user"></i> <?php echo $this->session->fullname; ?></a>
         </li>
     </ul>
     <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
@@ -48,25 +33,9 @@
             <li class="li-4">
                 <a href="<?=base_url()?>admin/profile.html"><i class="fa fa-fw fa-address-card-o"></i> Thông tin cá nhân</a>
             </li>
-            
-            <?php if ($this->session->permission == 2): ?>
-                <li class="li-9">
-                    <a href="<?=base_url()?>admin/category.html"><i class="fa fa-fw fa-table"></i> Category</a>
-                </li>
-                <li class="li-5">
-                    <a href="<?=base_url()?>admin/manager_user.html"><i class="fa fa-fw fa-table"></i> Quản lý thành viên</a>
-                </li>
-                <li class="li-6">
-                    <a href="<?=base_url()?>admin/banner/list.html"><i class="fa fa-fw fa-cc-discover"></i> Danh sách banner</a>
-                </li>
-                <li class="li-7">
-                    <a href="<?=base_url()?>admin/banner/create.html"><i class="fa fa-fw fa-plus-circle"></i> Tạo banner mới</a>
-                </li>
-                <li class="li-8">
-                    <a href="<?=base_url()?>admin/notification/popup.html"><i class="fa fa-bell"></i> Thông báo</a>
-                </li>
-            <?php endif ?>
-                       
+            <li class="li-5">
+                <a href="<?=base_url()?>admin/manager_user.html"><i class="fa fa-fw fa-table"></i> Quản lý thành viên</a>
+            </li>            
             <li>
                 <a href="<?=base_url()?>signout"><i class="fa fa-fw fa-times-circle"></i> Đăng xuất</a>
             </li>

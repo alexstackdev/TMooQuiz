@@ -4,9 +4,6 @@
 body {
     margin-top: 100px;
 }
-@media (max-width: 768px){
-    
-}
 @media (min-width: 768px) {
     body {
         margin-top: 50px;
@@ -49,18 +46,10 @@ body {
     color: #fff;
     background-color: #000;
 }
-li.dropdown-item a {
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
-li.dropdown-item a i {
-    margin-right: 5px;
-}
 #page-wrapper {
    padding: 0;
    width: 100%;
    background: #fff;
-   
 }
 .page-header {
     line-height: 45px;

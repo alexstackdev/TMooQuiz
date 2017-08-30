@@ -6,7 +6,6 @@ $('#submit_create_quiz').on('click', function() {
     $title_create_quiz = $('#title_create_quiz').val();
     $body_create_quiz = $('#body_create_quiz').val();
     $note_create_quiz = $('#note_create_quiz').val();
-    $stt = $('select#status').val();
     $category = $('select#category').val();
     $capt = $('#captcha').val();
     $re_capt = $('#re_captcha').val();
@@ -57,8 +56,7 @@ function load_ajax_creat(){
                 title_quiz : $title_create_quiz,
                 body_quiz : $body_create_quiz,
                 note_quiz : $note_create_quiz,
-                category : $category,
-                stt : $stt
+                category : $category
             // Thực thi khi gửi dữ liệu thành công
             }, success : function(data) {
                 $('#formCreateQuiz .alert').removeClass('hidden');

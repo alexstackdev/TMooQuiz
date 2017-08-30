@@ -722,7 +722,7 @@ if ( ! function_exists('remove_invisible_characters'))
 		// carriage return (dec 13) and horizontal tab (dec 09)
 		if ($url_encoded)
 		{
-			$non_displayables[] = '/%0[0-8bcef]/i';	// url encoded 00-08, 11, 12, 14, 20
+			$non_displayables[] = '/%0[0-8bcef]/i';	// url encoded 00-08, 11, 12, 14, 15
 			$non_displayables[] = '/%1[0-9a-f]/i';	// url encoded 16-31
 		}
 

@@ -57,4 +57,3 @@ $route['category/(:any)'] = 'index/category/$1';
 $route['quiz/(:num)/(:any)'] = 'index/quiz/$1/$2';
 $route['search'] = 'index/search';
 $route['admin/manager_user/:num'] = 'admin/manager_user';
-$route['admin/banner/list'] = 'admin/banner';
