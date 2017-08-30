@@ -36,6 +36,7 @@ class Manager_user extends Admin_Controller {
         $this->db->where("user_id", $user_id)->delete("quiz");
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
     public function quiz($user_id){
@@ -54,4 +55,6 @@ class Manager_user extends Admin_Controller {
         $this->db->where("quiz_id", $quiz_id)->delete("quiz");
     }
 >>>>>>> parent of e250767... update 1
+=======
+>>>>>>> 0544d08624215e5c9df6cf396d7964e4df326234
 }

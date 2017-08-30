@@ -9,6 +9,7 @@ class Listquiz extends Admin_Controller {
             $user_id = $this->session->user_id;
             //$this->data['user'] = $this->db->query("SELECT * FROM user WHERE user_id = $user_id ")->row_array();
 <<<<<<< HEAD
+<<<<<<< HEAD
             $this->data['quiz'] = $this->db->query("SELECT quiz.quiz_id,quiz.title,quiz.quiz_slug,quiz.viewed,quiz.created,category.category FROM quiz JOIN category ON quiz.category_id = category.category_id WHERE user_id = $user_id ")->result();
 =======
             
@@ -27,6 +28,9 @@ class Listquiz extends Admin_Controller {
             $limit = $start.",".$config['per_page'];
             $this->data['quiz'] = $this->db->query("SELECT quiz.quiz_id,quiz.title,quiz.quiz_slug,quiz.viewed,quiz.created,category.category FROM quiz JOIN category ON quiz.category_id = category.category_id WHERE user_id = $user_id ORDER BY created DESC limit $limit")->result();
 >>>>>>> parent of e250767... update 1
+=======
+            $this->data['quiz'] = $this->db->query("SELECT quiz.quiz_id,quiz.title,quiz.quiz_slug,quiz.viewed,quiz.created,category.category FROM quiz JOIN category ON quiz.category_id = category.category_id WHERE user_id = $user_id ")->result();
+>>>>>>> 0544d08624215e5c9df6cf396d7964e4df326234
     		$this->render('admin/listquiz_view');
     	}
     	else

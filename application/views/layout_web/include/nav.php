@@ -17,10 +17,14 @@
                     <?php if ($this->mcode->admin_logged_in()): ?>
                         <li class="user">
 <<<<<<< HEAD
+<<<<<<< HEAD
                             <a href="<?=base_url()?>admin.html"><i class="fa fa-user"></i> <?php echo $this->session->fullname; ?></a>
 =======
                             <a href="<?=base_url()?>admin/listquiz.html"><i class="fa fa-user"></i> <?php echo $this->session->fullname; ?></a>
 >>>>>>> parent of e250767... update 1
+=======
+                            <a href="<?=base_url()?>admin.html"><i class="fa fa-user"></i> <?php echo $this->session->fullname; ?></a>
+>>>>>>> 0544d08624215e5c9df6cf396d7964e4df326234
                         </li>
                         <li class="logout">
                             <a href="<?=base_url()?>signout.html"><i class="fa fa-sign-out"></i> Đăng xuất</a>
