@@ -11,17 +11,26 @@ class Index extends Public_Controller {
             'description'   => 'Trang chủ',
             'url'       => base_url()
     		);
-    	$this->data['list_category'] = $this->db->query("select * from category")->result();      
+    	$sql_cat = "select * from category";     
+
+        $this->data['list_category'] = $this->mcode->get_cache_data('list_category',$sql_cat,1);
         $this->view('web/homepage');
     }
 
     public function category($slug = "")
     {
-    	$this->data['list_category'] = $this->db->query("select * from category")->result();
+        //$this->output->cache(30);
+        $sql_cat = "select * from category";        
+
+    	$this->data['list_category'] = $this->mcode->get_cache_data('list_category',$sql_cat,1);
     	$this->data['current_id'] = $this->db->query("select category_id,category from category where cat_slug = '$slug'")->row_array();
     	$cat_id = $this->data['current_id']['category_id'];
-    	$this->data['quiz_view'] = $this->db->query("SELECT *,quiz.created FROM quiz JOIN user ON quiz.user_id=user.user_id WHERE category_id=$cat_id ORDER BY viewed DESC")->result();
-    	$this->data['quiz_new'] = $this->db->query("SELECT *,quiz.created FROM quiz JOIN user ON quiz.user_id=user.user_id WHERE category_id=$cat_id ORDER BY quiz_id DESC")->result();
+
+        $sql_quiz_view = "SELECT *,quiz.created FROM quiz JOIN user ON quiz.user_id=user.user_id  WHERE category_id=$cat_id AND quiz.status = 1 ORDER BY viewed DESC";
+        $sql_quiz_new = "SELECT *,quiz.created FROM quiz JOIN user ON quiz.user_id=user.user_id  WHERE category_id=$cat_id AND quiz.status = 1 ORDER BY quiz_id DESC";
+
+    	$this->data['quiz_view'] = $this->db->query($sql_quiz_view)->result();
+    	$this->data['quiz_new'] = $this->db->query($sql_quiz_new)->result();
     	$this->data['quiz_info'] = array(
     		'title'		=> $this->data['current_id']['category'],
             'description'   => 'Danh mục '.$this->data['current_id']['category'],
@@ -30,14 +39,13 @@ class Index extends Public_Controller {
     	$this->view('web/category_view');
     }
 
+    
+
     public function quiz($id = '', $slug = '')
     {
-    	$this->data['qs'] = $this->db->query("SELECT *,quiz.created FROM quiz JOIN user ON quiz.user_id=user.user_id JOIN category ON quiz.category_id = category.category_id WHERE quiz_id =' $id  ' AND quiz_slug='$slug' ")->row_array();    	
-    	$this->data['section'] = $this->db->query("SELECT * FROM section WHERE quiz_id='$id' ")->result();
-        $a = null;
         $sql_qs = "SELECT *,quiz.created FROM quiz JOIN user ON quiz.user_id=user.user_id JOIN category ON quiz.category_id = category.category_id WHERE quiz_id =' $id  ' AND quiz_slug='$slug' ";
-    	$this->data['qs'] = $this->mcode->get_cache_data($id,$sql_qs,0);
-
+    	$this->data['qs'] = $this->mcode->get_cache_data($id,$sql_qs,0);    	
+    	
         $content = $this->mcode->toQuiz($this->data['qs']['quiz_content']);
         $check = $this->input->get('mixed');
         if ($check == 'true') {
@@ -71,7 +79,7 @@ class Index extends Public_Controller {
             "viewed"    => $viewed
             );
         $this->db->where('quiz_id',$quiz_id);
-        if ($this->db->update('quiz',$data)) {
+        if ($this->db->update('quiz',$data)) {            
             echo 'Cập nhật thành công !';
         }
         else
@@ -81,7 +89,9 @@ class Index extends Public_Controller {
     }
 
     public function search(){
-        $this->data['list_category'] = $this->db->query("select * from category")->result();
+        $sql_cat = "select * from category";        
+        $this->data['list_category'] = $this->mcode->get_cache_data('list_category',$sql_cat,1);
+
         $this->data['current_id'] = -1;
         $this->data['key'] = $this->input->get('s');
         $key = $this->data['key'];        
@@ -91,7 +101,8 @@ class Index extends Public_Controller {
         }
         else
         {
-            $this->data['result'] = $this->db->query("SELECT * FROM quiz JOIN user ON quiz.user_id=user.user_id JOIN category ON quiz.category_id = category.category_id WHERE (title LIKE '%$key%') OR user.fullname LIKE '%$key%' OR quiz_id='$key' ORDER BY viewed DESC ")->result();
+            $sql_search = "SELECT * FROM quiz JOIN user ON quiz.user_id=user.user_id JOIN category ON quiz.category_id = category.category_id WHERE ((title LIKE '%$key%') OR user.fullname LIKE '%$key%' OR quiz_id='$key') AND quiz.status = 1 ORDER BY viewed DESC ";
+            $this->data['result'] = $this->mcode->get_cache_data('search',$sql_search,1);
         }
         $this->data['quiz_info'] = array(
             'title'     => 'Tìm kiếm : '.$key,

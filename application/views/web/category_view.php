@@ -7,8 +7,15 @@
 	<div id="page-wrapper">
 		<div class="container-fluid">
 			<h1 class="title page-header"><span>Danh sách đề thi</span></h1>
-			<div class="row">
+			<div class="row">				
 				<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+					<div class="tab-content">
+						<div class="banner-category-1 text-center" style="margin-bottom: 1em; ">
+							<?php if ($data_user['vip'] != 1): ?>
+								<script src="//www.adsptp.com/15039-728x90.js"></script>
+								<?php $this->mcode->get_banner(1); ?>	
+							<?php endif ?>											
+						</div>
 					<!-- Nav tabs -->
 					<ul class="nav nav-tabs nav-quiz" role="tablist">
 					  <li class="active"><a href="#top-view" role="tab" data-toggle="tab" class=""><i class="fa fa-bar-chart"></i> Top View</a></li>
@@ -16,83 +23,13 @@
 					</ul>
 
 					<!-- Tab panes -->
-					<div class="tab-content">
+
 					  <div class="tab-pane active" id="top-view">
 					  	<?php if ($quiz_view == null) { ?>
 							<div class="alert alert-danger">Chuyên mục này chưa có đề thi nào!</div>
 						<?php }
-							else { ?>
-								<div class="col-md-6 col-sm-6 col-xs-12">
-									<?php foreach ($quiz_view as $key => $item): ?>
-										<?php if ($key % 2 == 0): ?>
-											<div class="quiz-item" id="item-view<?php echo $item->quiz_id;?>" data-url="<?=base_url()?>quiz/<?php echo $item->quiz_id.'/'.$item->quiz_slug ?>.html">
-								  				<a class="quiz-title"  href="<?=base_url()?>quiz/<?php echo $item->quiz_id.'/'.$item->quiz_slug ?>.html?mixed=false" >
-								  					<i class="fa fa-book"></i> <?php echo $item->title; ?>
-								  					<span class="badge">ID <?php echo $item->quiz_id; ?></span>
-								  				</a>
-								  				<div class="quiz-meta">
-								  					<span class="meta-viewed">
-								  						<i class="fa fa-bar-chart"></i> Lượt thi: <?php echo $item->viewed; ?>
-								  					</span>
-								  					<?php if ($item->fb): ?>
-								  						<span class="meta-user">
-									  						<i class="fa fa-user"></i> Người tạo: <a href="<?php echo $item->fb; ?>" target="_blank"><?php echo $item->fullname; ?></a>
-									  					</span>
-								  					<?php else: ?>
-								  						<span class="meta-user">
-									  						<i class="fa fa-user"></i> Người tạo: <?php echo $item->fullname; ?>
-									  					</span>
-								  					<?php endif ?>								  					
-								  				</div>								  				
-							  					<div class="meta-time">
-							  						<i class="fa fa-clock-o"></i> Ngày tạo: <?php echo date('d/m/Y',strtotime($item->created)); ?>
-							  					</div>
-								  				<div class="quiz-description">
-								  					<span><i class="fa fa-sticky-note" style="color: #e74c3c;"></i> Mô tả: <?php echo $item->note; ?></span>
-								  				</div>
-								  				<div class="meta-setting">
-								  					<i class="fa fa-cog"></i> Thiết lập: <input type="checkbox" name="" id="mixed<?php echo $item->quiz_id; ?>" onclick="mixed_qs(<?php echo $item->quiz_id; ?>)"> Đảo câu hỏi
-								  				</div>
-											</div>
-										<?php endif ?>
-									<?php endforeach ?>
-								</div>
-								<div class="col-md-6 col-sm-6 col-xs-12">
-									<?php foreach ($quiz_view as $key => $item): ?>
-										<?php if ($key % 2 != 0): ?>
-											<div class="quiz-item" id="item-view<?php echo $item->quiz_id;?>" data-url="<?=base_url()?>quiz/<?php echo $item->quiz_id.'/'.$item->quiz_slug ?>.html">
-								  				<a class="quiz-title" href="<?=base_url()?>quiz/<?php echo $item->quiz_id.'/'.$item->quiz_slug ?>.html?mixed=false">
-								  					<i class="fa fa-book"></i> <?php echo $item->title; ?>
-								  					<span class="badge">ID <?php echo $item->quiz_id; ?></span>
-								  				</a>
-								  				<div class="quiz-meta">
-								  					<span class="meta-viewed">
-								  						<i class="fa fa-bar-chart"></i> Lượt thi: <?php echo $item->viewed; ?>
-								  					</span>
-								  					<?php if ($item->fb): ?>
-								  						<span class="meta-user">
-									  						<i class="fa fa-user"></i> Người tạo: <a href="<?php echo $item->fb; ?>" target="_blank"><?php echo $item->fullname; ?></a>
-									  					</span>
-								  					<?php else: ?>
-								  						<span class="meta-user">
-									  						<i class="fa fa-user"></i> Người tạo: <?php echo $item->fullname; ?>
-									  					</span>
-								  					<?php endif ?>								  					
-								  				</div>								  				
-							  					<div class="meta-time">
-							  						<i class="fa fa-clock-o"></i> Ngày tạo: <?php echo date('d/m/Y',strtotime($item->created)); ?>
-							  					</div>
-								  				<div class="quiz-description">
-								  					<span><i class="fa fa-sticky-note" style="color: #e74c3c;" ></i> Mô tả: <?php echo $item->note; ?></span>
-								  				</div>
-								  				<div class="meta-setting">
-								  					<i class="fa fa-cog"></i> Thiết lập: <input type="checkbox" name="" id="mixed<?php echo $item->quiz_id; ?>" onclick="mixed_qs(<?php echo $item->quiz_id; ?>)"> Đảo câu hỏi
-								  				</div>
-											</div>
-										<?php endif ?>
-									<?php endforeach ?>
-								</div>
-							<?php						  		
+							else { 
+								$this->load->view('web/tab_content_view');					  		
 						  	}
 					  	 ?>
 					  </div>
@@ -100,79 +37,8 @@
 					  	<?php if ($quiz_new == null) { ?>
 							<div class="alert alert-danger">Chuyên mục này chưa có đề thi nào!</div>
 						<?php }
-							else { ?>
-								<div class="col-md-6 col-sm-6 col-xs-12">
-									<?php foreach ($quiz_new as $key => $item): ?>
-										<?php if ($key % 2 == 0): ?>
-											<div class="quiz-item" id="item-new<?php echo $item->quiz_id;?>" data-url="<?=base_url()?>quiz/<?php echo $item->quiz_id.'/'.$item->quiz_slug ?>.html">
-								  				<a class="quiz-title" href="<?=base_url()?>quiz/<?php echo $item->quiz_id.'/'.$item->quiz_slug ?>.html?mixed=false">
-								  					<i class="fa fa-book"></i> <?php echo $item->title; ?>
-								  					<span class="badge">ID <?php echo $item->quiz_id; ?></span>
-								  				</a>
-								  				<div class="quiz-meta">
-								  					<span class="meta-viewed">
-								  						<i class="fa fa-bar-chart"></i> Lượt thi: <?php echo $item->viewed; ?>
-								  					</span>
-								  					<?php if ($item->fb): ?>
-								  						<span class="meta-user">
-									  						<i class="fa fa-user"></i> Người tạo: <a href="<?php echo $item->fb; ?>" target="_blank"><?php echo $item->fullname; ?></a>
-									  					</span>
-								  					<?php else: ?>
-								  						<span class="meta-user">
-									  						<i class="fa fa-user"></i> Người tạo: <?php echo $item->fullname; ?>
-									  					</span>
-								  					<?php endif ?>								  					
-								  				</div>								  				
-							  					<div class="meta-time">
-							  						<i class="fa fa-clock-o"></i> Ngày tạo: <?php echo date('d/m/Y',strtotime($item->created)); ?>
-							  					</div>
-								  				<div class="quiz-description">
-								  					<span><i class="fa fa-sticky-note" style="color: #e74c3c;"></i> Mô tả: <?php echo $item->note; ?></span>
-								  				</div>
-								  				<div class="meta-setting">
-								  					<i class="fa fa-cog"></i> Thiết lập: <input type="checkbox" name="" id="mixed-new<?php echo $item->quiz_id; ?>" onclick="mixed_qs1(<?php echo $item->quiz_id; ?>)"> Đảo câu hỏi
-								  				</div>
-											</div>
-										<?php endif ?>
-									<?php endforeach ?>
-								</div>
-								<div class="col-md-6 col-sm-6 col-xs-12">
-									<?php foreach ($quiz_new as $key => $item): ?>
-										<?php if ($key % 2 != 0): ?>
-											<div class="quiz-item" id="item-new<?php echo $item->quiz_id;?>" data-url="<?=base_url()?>quiz/<?php echo $item->quiz_id.'/'.$item->quiz_slug ?>.html">
-								  				<a class="quiz-title" href="<?=base_url()?>quiz/<?php echo $item->quiz_id.'/'.$item->quiz_slug ?>.html?mixed=false">
-								  					<i class="fa fa-book"></i> <?php echo $item->title; ?>
-								  					<span class="badge">ID <?php echo $item->quiz_id; ?></span>
-								  				</a>
-								  				<div class="quiz-meta">
-								  					<span class="meta-viewed">
-								  						<i class="fa fa-bar-chart"></i> Lượt thi: <?php echo $item->viewed; ?>
-								  					</span>
-								  					<?php if ($item->fb): ?>
-								  						<span class="meta-user">
-									  						<i class="fa fa-user"></i> Người tạo: <a href="<?php echo $item->fb; ?>" target="_blank"><?php echo $item->fullname; ?></a>
-									  					</span>
-								  					<?php else: ?>
-								  						<span class="meta-user">
-									  						<i class="fa fa-user"></i> Người tạo: <?php echo $item->fullname; ?>
-									  					</span>
-								  					<?php endif ?>								  					
-								  				</div>								  				
-							  					<div class="meta-time">
-							  						<i class="fa fa-clock-o"></i> Ngày tạo: <?php echo date('d/m/Y',strtotime($item->created)); ?>
-							  					</div>
-								  				<div class="quiz-description">
-								  					<span><i class="fa fa-sticky-note" style="color: #e74c3c;" ></i> Mô tả: <?php echo $item->note; ?></span>
-								  				</div>
-								  				<div class="meta-setting">
-								  					<i class="fa fa-cog"></i> Thiết lập: <input type="checkbox" name="" id="mixed-new<?php echo $item->quiz_id; ?>" onclick="mixed_qs1(<?php echo $item->quiz_id; ?>)"> Đảo câu hỏi
-								  				</div>
-											</div>
-										<?php endif ?>
-									<?php endforeach ?>
-								</div>
-						  		
-						  	<?php 
+							else { 
+								$this->load->view('web/tab_content_new');
 						  	}
 					  	 ?>
 					  </div>
@@ -182,6 +48,7 @@
 		</div>
 	</div>
 </div>
+<div class="url" data-url="<?=base_url()?>admin/manager_user/delete_quiz"></div>
 <script>
 	// đảo câu hỏi ở tab 1
 function mixed_qs($id) {
@@ -207,4 +74,32 @@ function mixed_qs1($id) {
 		$('#item-new'+$id+' a').attr('href',$url2);
 	}
 }
+$(function(){	
+	$('.baner-footer-4').css('margin-top', '1em');
+});
+<?php if ($this->session->permission == 2): ?>
+	function delete_quiz($id,$type){
+		$url = $('.url').attr('data-url');
+		var $check = confirm('Bạn chắc chắn muốn xóa quiz này không? Nhấn Ok để xóa.');
+		if ($type == 1) {
+			$item = $('#item-view'+$id+'');
+		}
+		else if($type == 2){
+			$item = $('#item-new'+$id+'')
+		}
+		if ($check) {
+			$.ajax({
+	            url : $url, 
+	            type : 'POST', 
+	            // Các dữ liệu
+	            data : {
+	            	quiz_id : $id               
+	            // Thực thi khi gửi dữ liệu thành công
+	            }, success : function(data) {
+	                $item.remove();
+	            }
+	        });
+		}
+	}
+<?php endif ?>
 </script>

@@ -26,6 +26,42 @@ class Mcode extends CI_Model {
             return false;
         }
     }
+
+    public function get_data_user(){
+        if ($this->admin_logged_in()) {
+            $id = $this->session->user_id;
+            $user = $this->db->query("SELECT * FROM user WHERE user_id = $id ")->row_array();
+            return $user;
+        }
+    }
+
+    public function get_cache_data($params,$sql = null, $type = 0,$time = 600){
+        if (! $data = $this->cache->get($params)) {
+            if ($type == 1) {
+                $data = $this->db->query($sql)->result();
+            }else {
+                $data = $this->db->query($sql)->row_array();
+            }            
+            $this->cache->save($params,$data,$time);
+        }
+        return $data;
+    }
+
+    public function get_position($id){
+        $item = $this->db->query("SELECT banner_position FROM position WHERE banner_id = $id")->result();
+        foreach ($item as $key => $val) {
+            echo "<p>$val->banner_position</p>";
+        }
+    }
+
+    public function get_banner($position){
+        $item = $this->db->query("SELECT * FROM banner JOIN position ON banner.banner_id = position.banner_id  WHERE position.banner_position = $position ORDER BY RAND() LIMIT 1")->row_array();
+        if ($item) {
+            echo "<a href=".$item['link']." target='_blank'><img class='img-responsive' src=".$item['img']." style='margin: 0 auto;'></a>";
+        }
+        
+    }
+    
     public function clean($strText) {
         $str=preg_replace('/<script\b[^>]*>(.*?)<\/script>|<script\b[^>]*>|<\/script>/', "Không được sử dụng script", $strText);
         return $str;        

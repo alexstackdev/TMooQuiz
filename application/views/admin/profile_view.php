@@ -55,7 +55,8 @@
                                 </div>
                             </div>
                             <input type="reset" value="Làm mới"  class="reset-form hidden">
-                            <div class="alert alert-danger hidden" id="alert-pass" data-url="<?=base_url()?>admin/profile/change_pass"></div> 
+                            <div class="alert alert-danger hidden" id="alert-pass" data-url="<?=base_url()?>admin/profile/change_pass"></div>
+                            
                         </div>
                     </div>
                     <div class="panel panel-default">
@@ -64,6 +65,12 @@
                                 <label for="myname" class="col-sm-4 control-label">Tên của bạn :</label>
                                 <div class="col-sm-8 col-md-4">
                                   <input type="text" class="form-control" id="myname" value="<?php echo $user['fullname']; ?>" placeholder="Nhập tên bạn">
+                                </div>
+                            </div>
+                            <div class="form-group balance">
+                                <label for="username" class="col-sm-4 control-label">Số tiền :</label>
+                                    <div class="col-sm-8 col-md-4">
+                                      <p class="form-control-static"><?php echo $data_user['balance'].' VND'; ?></p>
                                 </div>
                             </div>
                             <div class="form-group">
