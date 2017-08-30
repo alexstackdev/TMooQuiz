@@ -13,17 +13,7 @@
 				<div class="panel-body">
 					<p><strong>ID đề thi: </strong><span class="quiz-id label label-primary"><?php echo $qs['quiz_id']; ?></span></p>
 					<p><strong>Danh mục: </strong><a href="<?=base_url()?>category/<?php echo $qs['cat_slug']; ?>.html" title="<?php echo $qs['category']; ?>"><?php echo $qs['category']; ?></a></p>
-					<p><strong>Người tạo: </strong>
-					<span>
-					<?php 
-						if ($qs['fb']) {
-							echo '<a href="'.$qs['fb'].'" target="_blank">'.$qs['fullname'].'</a>';
-						} else {
-							echo $qs['fullname']; 
-						}
-					?>
-						
-					</span></p>
+					<p><strong>Người tạo: </strong><span><?php echo $qs['fullname']; ?></span></p>
 					<p><strong>Lượt thi: </strong><span class="quiz-viewed"><?php echo $qs['viewed']; ?></span></p>
 					<p><strong>Ngày tạo: </strong><span><?php echo date('H:i:s d/m/Y',strtotime($qs['created'])); ?></span></p>
 				</div>
@@ -44,20 +34,6 @@
 					</script>				
 					<div class="fb-like" data-href="" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
 				</div>
-			</div>
-			<div class="banner-quiz-left hidden-xs" style="margin-bottom: 1em;">
-				<?php if ($data_user['vip'] != 1): ?>
-					<script src="//www.adsptp.com/15039-300x250.js"></script>
-					<?php $this->mcode->get_banner(2); ?>
-				<?php endif ?>				
-				
-			</div>
-			<div class="baner-quiz-top-1 hidden-sm hidden-md hidden-lg" style="margin-bottom: 1em;">
-				<?php if ($data_user['vip'] != 1): ?>
-					<script src="//www.adsptp.com/15039-468x60.js"></script>
-					<?php $this->mcode->get_banner(1); ?>
-				<?php endif ?>				
-				
 			</div>
 		</div>
 		<!--Content-->		
@@ -94,12 +70,6 @@
 				<div class="panel-footer text-center">
 					<button class="btn btn-primary" onclick="return reAnswer()">Làm lại câu sai</button>
 				</div>
-			</div>
-			<div class="banner-quiz-right hidden-xs" style="margin-bottom: 1em;">
-				<?php if ($data_user['vip'] != 1): ?>
-					<script src="//www.adsptp.com/15039-300x250.js"></script>
-					<?php $this->mcode->get_banner(3); ?>
-				<?php endif ?>
 			</div>
 		</div>
 	</div>

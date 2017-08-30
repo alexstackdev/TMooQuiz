@@ -68,9 +68,9 @@ body {
 .section-cat .category .cloud-img {
 	height: 46px;
     position: absolute;
+    background: url("/2.0/uploads/top_cloud.png");
     width: 100%;
     top: -40px;
-    background: url(top_cloud.png);
 }
 .section-cat .category .book {
 	position: absolute;
@@ -101,6 +101,7 @@ body {
 	cursor: pointer;
     top: -10px;
     color: #fff  !important;
+    background: #428bca !important;
 }
 .cat-name h4 {
 	line-height: 1.3em;
@@ -115,29 +116,7 @@ body {
 	content:  "\f07c";
 }
 
-li.dropdown-item a {
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
-li.dropdown-item a i {
-    margin-right: 5px;
-}
-li.dropdown-item a:hover {
-	background: #2980b9;
-}
-li.open {
-	background: #3b5998 !important;
-}
-li.dropdown ul.dropdown-menu {
-    background: #3b5998;
-}
-.body-category li.dropdown a {
-	color: #fff;
-}
-.body-category li.dropdown ul.dropdown-menu {
-    background: #222222;
-    
-}
+
 /**
  * css quiz list
  */
@@ -317,11 +296,6 @@ li.functions {
 /**
  * Css nav category
  */
-@media (max-width: 768px){
-	#page-wrapper {
-    padding-top: 100px;
-	}
-}
 @media (min-width: 768px){
 	body.body-category {
     margin-top: 50px;
@@ -347,10 +321,7 @@ li.functions {
 	    width: 225px;
 	}
 	#page-wrapper {
-    	padding: 10px;
-	}
-	.banner-category-1 {
-		width: 70%;
+    padding: 10px;
 	}
 }
 .top-nav>li {
@@ -364,6 +335,7 @@ li.functions {
     color: #fff;
 }
 #page-wrapper {
+    padding: 0;
     width: 100%;
 }
 .body-category {

@@ -206,7 +206,7 @@ class CI_DB_pdo_informix_driver extends CI_DB_pdo_driver {
 					WHEN 12 THEN \'TEXT\'
 					WHEN 13 THEN \'VARCHAR\'
 					WHEN 14 THEN \'INTERVAL\'
-					WHEN 20 THEN \'NCHAR\'
+					WHEN 15 THEN \'NCHAR\'
 					WHEN 16 THEN \'NVARCHAR\'
 					WHEN 17 THEN \'INT8\'
 					WHEN 18 THEN \'SERIAL8\'

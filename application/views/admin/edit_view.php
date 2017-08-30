@@ -29,20 +29,8 @@
                         <label>Nội dung</label>          
                         <textarea class="form-control" id="body_edit_quiz" rows="18" placeholder="Nhập các câu hỏi của đề thi. Lưu ý nhập đúng cấu trúc đề !"><?php echo $quiz['quiz_content']; ?></textarea>
                     </div>
-                    <div class="form-group">
-                        <label>Status</label>
-                        <select id="status" class="col-md-6 col-sm-6 col-xs-12" style="display: block;float: none !important;height: 30px;">
-                            <?php if ($quiz['status'] == 1): ?>
-                                <option value="2">Không công khai</option>                 
-                                <option value="1" selected>Công khai</option>
-                            <?php else: ?>
-                                <option value="2" selected>Không công khai</option>                 
-                                <option value="1" >Công khai</option>
-                            <?php endif ?>                           
-                        </select>
-                    </div>
                     <button class="btn btn-primary" id="submit_edit_quiz"><i class="fa fa-check-square-o"></i> Lưu</button>
-                    <a href="<?=base_url()?>admin/listquiz.html">
+                    <a href="<?=base_url()?>admin.html">
                         <button type="button" class="btn btn-default"><i class="fa fa-arrow-left"></i> Trở về</button>
                     </a>
                     <br><br>

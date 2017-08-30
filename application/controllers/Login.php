@@ -6,7 +6,7 @@ class Login extends Public_Controller {
     }
     public function index() {
         if ($this->mcode->admin_logged_in()) {
-            redirect('admin/listquiz', 'refresh');
+            redirect('admin', 'refresh');
         }
         $this->data['quiz_info'] = array(
             'title'     =>  'TMooQuiz 2.0',

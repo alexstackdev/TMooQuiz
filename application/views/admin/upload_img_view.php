@@ -13,7 +13,7 @@
 								<label for="myfile">Có thể upload nhiều ảnh cùng 1 lúc</label>
 								<input type="file" class="form-control" name="list_img[]" id="myfile" multiple>
 							</div>
-							<a href="<?=base_url()?>admin/listquiz.html" class="btn btn-default">
+							<a href="<?=base_url()?>admin.html" class="btn btn-default">
 			                    <span class="glyphicon glyphicon-arrow-left"></span> Trở về
 			                </a>
 			                <input type="submit" class="btn btn-primary" id="submit_upload_pest" name="upload" value="Upload">

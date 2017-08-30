@@ -40,22 +40,12 @@ class Create extends Admin_Controller {
         $user_id = $this->input->post('user_id');
         $title_quiz = $this->input->post('title_quiz'); // tên đề
         $body_quiz = $this->input->post('body_quiz'); // các câu hỏi
-        $check_content = $this->mcode->toQuiz($body_quiz);
-
         $note_quiz = $this->input->post('note_quiz'); // mô tả
         $category = $this->input->post('category'); // tên chuyên mục
         $slug_quiz = url_title($this->mcode->stripUnicode(strtolower($this->mcode->clean($title_quiz)))); // tạo slug theo tên đề
         $cat_id = $this->db->query("SELECT category_id FROM category WHERE category = '$category' ")->row_array(); // lấy category_id
         $time = date('Y-m-d H:i:s');
         $success_alert = "<script>$('#formCreateQuiz .alert').attr('class', 'alert alert-success');</script>";
-        $stt = $this->input->post('status');
-        if ($check_content) {
-            $check_quiz = 1;
-        }
-        else {
-            $check_quiz = 2;
-            $stt = 2;
-        }
         $data = array(
             "quiz_id" => "",
             "category_id" => $cat_id['category_id'],
@@ -65,9 +55,7 @@ class Create extends Admin_Controller {
             "quiz_content"  => $this->mcode->clean($body_quiz),
             "created" => $time,
             "viewed" => 0,
-            "quiz_slug" =>  $slug_quiz,
-            "check_quiz" => $check_quiz,
-            "status"    => $stt
+            "quiz_slug" =>  $slug_quiz
             );
 
         if ($this->db->insert("quiz",$data)) {
