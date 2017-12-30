@@ -7,13 +7,14 @@ class Signup extends Public_Controller {
     }
     public function index() {
         if ($this->mcode->admin_logged_in()) {
-            redirect('admin', 'refresh');
+            return redirect('admin', 'refresh');
         }
+        $this->data['cat'] = $this->db->query("SELECT * FROM category")->result();
         $this->data['quiz_info'] = array(
-    		'title'		=>	'TMooQuiz 2.0',
+            'title'     =>  'TMooQuiz 2.0',
             'description'   => 'Đăng ký',
             'url'       => base_url().'signup.html'
-    		);
+            );
         $vals = array(
                 'word'      => '',
                 'img_path' => 'uploads/captcha/',
@@ -24,7 +25,7 @@ class Signup extends Public_Controller {
                 'word_length' => 5,
                 'font_size' => 35,
                 'img_id' => 'Imageid',
-                'pool' => '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
+                'pool' => '123456789abcdefghjkmnpqrstuvwxyzABCDEFGHJKMNPQRSTUVWXYZ',
                 'colors' => array(
                     'background' => array(235, 235, 235),
                     'border' => array(51, 51, 51),
@@ -37,29 +38,28 @@ class Signup extends Public_Controller {
     }
 
     public function create_user(){
-        $user = $this->input->post('username');
-        $password = $this->input->post('pass');
-        $fullname = $this->input->post('fullname');
-        $time = date('Y-m-d H:i:s');
-        $level = 0;
+        $data = $this->input->post();
+        if ($data['captcha'] != $data['re_captcha']) {
+            $this->session->set_flashdata('error','Captcha không đúng ! Vui lòng thử lại.') ;
+            return redirect('signup');
+        }
+        $user = $data['username'];
         $check_user = $this->db->query("SELECT * FROM user WHERE username ='$user' ")->row_array();
         if ($check_user) {
-            echo 'tên tài khoản đã tồn tại';
+            $this->session->set_flashdata('error','Tài khoản đã tồn tài ! Vui lòng thử lại.') ;
+            return redirect('signup','refresh');
         }
         else
         {
-            $data = array(
-            "user_id"   => "",
-            "username"  =>  $user,
-            "password"  =>  md5($password),
-            "fullname"  =>  $fullname,
-            "permission"    => $level,
-            "created"   =>  $time,
-            "fb"        => ""
-            );
+            $data['password'] = md5($data['password']);
+            $data['permission'] = 0;
+            $data['created'] = date('Y-m-d H:i:s');
+            unset($data['captcha']);
+            unset($data['re_captcha']);
             if ($this->db->insert('user',$data)) {
-                  echo 'Đăng ký thành công! Vui lòng click vào để <a href="'.base_url().'login.html"> Đăng nhập </a>ngay';
-              }
+                $this->session->set_flashdata('success','Đăng ký tài khoản thành công!') ;
+                return redirect('login','refresh');
+            }
         }
         
     }

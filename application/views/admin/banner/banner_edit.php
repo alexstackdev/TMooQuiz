@@ -25,17 +25,21 @@
                     <div class="form-group">
                         <label>Vị trí banner</label>
                         
-                        <?php for ($i = 1 ; $i <= 10; $i++): ?>
-                            <label class="checkbox-inline">
-                              <input type="checkbox" class="position" id="<?php echo 'checkbox-'.$i; ?>" value="<?php echo $i; ?>" 
-                                <?php foreach ($position as $key => $val): ?>
-                                    <?php if ($val->banner_position == $i): ?>
-                                        checked
-                                    <?php endif ?>
-                                <?php endforeach ?>
-                              > <?php echo $i; ?>
-                            </label>
-                        <?php endfor ?>
+                        <?php 
+                            $item = $this->mcode->positionArray();
+                         ?>
+                        <select name="position" class="position form-control" size="10" multiple>
+                            <?php foreach ($item as $key => $value): ?>
+                                <option value="<?php echo $key ; ?>"
+                                    <?php foreach ($position as $val): ?>
+                                        <?php if ($val->banner_position == $key): ?>
+                                            selected
+                                        <?php endif ?>
+                                    <?php endforeach ?>
+                                ><?php echo $value; ?></option>
+                            <?php endforeach ?>
+                        </select>
+
                     </div>
                     <button class="btn btn-primary" id="submit_edit_banner"><i class="fa fa-check-square-o"></i> Sửa</button>
                     <a href="<?=base_url()?>admin/banner/list.html">

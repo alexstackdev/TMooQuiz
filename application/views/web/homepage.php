@@ -18,9 +18,8 @@
 			        </span>
 		        </div>				
 			</form>
-			<div class="banner-homepage-1" style="margin-top: 1em;">
+			<div class="banner-homepage-top" style="margin-top: 1em;">
 				<?php if ($data_user['vip'] != 1): ?>
-					<script src="//www.adsptp.com/15039-728x90.js"></script>
 					<?php $this->mcode->get_banner(1); ?>
 				<?php endif ?>				
 				

@@ -1,6 +1,10 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');?>
-<div class="baner-footer-4 hidden-sm hidden-md hidden-lg" style="margin-bottom: 1em;">
-	<?php $this->mcode->get_banner(4); ?>
+
+<div class="loader" style="display: none;">
+    <div class="background-loading"></div> 
+    <div class="loading text-center">
+        <img src="<?php echo base_url();?>uploads/quiz-loading.gif" alt="Loading" title="Loading">
+    </div>
 </div>
 <footer class="footer-content">
 	<div class="container">
@@ -42,6 +46,7 @@
 		</div>
 	</div>
 </footer>
-<script src="<?=base_url()?>assets/bootstrap/js/bootstrap.min.js"></script>	
+<script src="<?=base_url()?>assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="<?=base_url()?>assets/js/card.js"></script>		
 </body>
 </html>

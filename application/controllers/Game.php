@@ -13,16 +13,12 @@ class Game extends Public_Controller {
     }
 
     public function pikachu(){
-        $this->data['quiz_info'] = array(
-            'title'		=>	'Pikachu',
-            'description'   => 'Game Giải Trí',
-            'url'       => base_url().'game/piakchu.html'
-        );
-        $this->data['pikachu'] = true;
-        $this->view('web/pikachu_view');
+        $this->data['game'] = true;
+        $this->view('web/game/pikachu');
     }
 
-    public function pikachu1(){
-        $this->view('web/game/pikachu');
+    public function game2048(){
+        $this->data['game'] = true;
+        $this->view('web/game/2048');
     }
 }

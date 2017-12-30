@@ -10,10 +10,17 @@
   					<span class="meta-viewed">
   						<i class="fa fa-bar-chart"></i> Lượt thi: <?php echo $item->viewed; ?>
   					</span>
-  					<?php if ($item->fb): ?>
+  					<?php if ($item->vip == 1): ?>
   						<span class="meta-user">
-	  						<i class="fa fa-user"></i> Người tạo: <a href="<?php echo $item->fb; ?>" target="_blank"><?php echo $item->fullname; ?></a>
-	  					</span>
+                  <i class="fa fa-user"></i> Người tạo: <a href="#" onclick="InfoUser(<?php echo $item->user_id ?>)">
+                    <?php if ($item->avatar): ?>
+                      <span class="icon-avt"><img class="img-responsive" src="<?=base_url().$item->avatar?>" ></span>
+                    <?php endif ?>
+                    <?php
+                   echo $item->fullname; ?>
+                   <img src="<?=base_url()?>uploads/2.png" width="10" height="10" class="icon-vip">
+               </a>
+              </span>
   					<?php else: ?>
   						<span class="meta-user">
 	  						<i class="fa fa-user"></i> Người tạo: <?php echo $item->fullname; ?>
@@ -29,6 +36,11 @@
   				<div class="meta-setting">
   					<i class="fa fa-cog"></i> Thiết lập: <input type="checkbox" name="" id="mixed-new<?php echo $item->quiz_id; ?>" onclick="mixed_qs1(<?php echo $item->quiz_id; ?>)"> Đảo câu hỏi
   				</div>
+          <?php if ($item->download): ?>
+              <div class="meta-download" style="margin-top: 10px;">
+                  <i class="fa fa-download"></i> Lượt download : <strong><?php echo $item->download; ?></strong>
+              </div>
+          <?php endif ?>
   				<?php if ($this->session->permission == 2): ?>
   					<div class="btn-admin" style="margin-top: 10px;">
   						<a href="<?=base_url()?>admin/listquiz/edit/<?php echo $item->quiz_id.'.html'; ?>" class="edit_quiz"><button type="button" class="btn btn-primary">
@@ -58,10 +70,17 @@
   					<span class="meta-viewed">
   						<i class="fa fa-bar-chart"></i> Lượt thi: <?php echo $item->viewed; ?>
   					</span>
-  					<?php if ($item->fb): ?>
-  						<span class="meta-user">
-	  						<i class="fa fa-user"></i> Người tạo: <a href="<?php echo $item->fb; ?>" target="_blank"><?php echo $item->fullname; ?></a>
-	  					</span>
+  					<?php if ($item->vip == 1): ?>
+              <span class="meta-user">
+                  <i class="fa fa-user"></i> Người tạo: <a href="#" onclick="InfoUser(<?php echo $item->user_id ?>)">
+                    <?php if ($item->avatar): ?>
+                      <span class="icon-avt"><img class="img-responsive" src="<?=base_url().$item->avatar?>" ></span>
+                    <?php endif ?>
+                    <?php
+                   echo $item->fullname; ?>
+                   <img src="<?=base_url()?>uploads/2.png" width="10" height="10" class="icon-vip">
+               </a>
+              </span>
   					<?php else: ?>
   						<span class="meta-user">
 	  						<i class="fa fa-user"></i> Người tạo: <?php echo $item->fullname; ?>
@@ -77,6 +96,11 @@
   				<div class="meta-setting">
   					<i class="fa fa-cog"></i> Thiết lập: <input type="checkbox" name="" id="mixed-new<?php echo $item->quiz_id; ?>" onclick="mixed_qs1(<?php echo $item->quiz_id; ?>)"> Đảo câu hỏi
   				</div>
+          <?php if ($item->download): ?>
+              <div class="meta-download" style="margin-top: 10px;">
+                  <i class="fa fa-download"></i> Lượt download : <strong><?php echo $item->download; ?></strong>
+              </div>
+          <?php endif ?>
   				<?php if ($this->session->permission == 2): ?>
   					<div class="btn-admin" style="margin-top: 10px;">
   						<a href="<?=base_url()?>admin/listquiz/edit/<?php echo $item->quiz_id.'.html'; ?>" class="edit_quiz"><button type="button" class="btn btn-primary">

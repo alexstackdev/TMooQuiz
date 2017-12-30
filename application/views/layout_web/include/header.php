@@ -5,11 +5,13 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
     <title><?php echo $quiz_info['title'];?> | Ứng dụng tạo và chia sẻ đề thi trắc nghiệm trực tuyến</title>
+    <meta name="maValidation" content="350c03007471eeeb0826eb2ef5a3800e" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta itemprop="name" content="<?php echo $quiz_info['title'];?> | Ứng dụng tạo và chia sẻ đề thi trắc nghiệm trực tuyến ">
     <meta name="revisit-after" content="1 days" />
     <meta name="author" content="pesthubt.com">
     <meta name="robots" content="INDEX,FOLLOW"/>
+    <link rel="manifest" href="<?=base_url()?>manifest.json">
     <meta name="keywords" content="TMoo, TMoo trắc nghiệm , TMoo trac nghiem, TMoo pest, tmoo quiz , tmoo trac nghiem quiz , quiz hubt ,tmoo hubt, trac nghiem tmoo ,pest hubt , on thi hubt , on thi trac nghiem hubt, trac nghiem hubt, pest trac nghiem hubt, phan mem on thi trac nghiem hubt, pesthubt"/>
     <meta name="description" content="<?php echo $quiz_info['description']; ?> | TMooQuiz 2.0"/>
     <meta itemprop="description" content="<?php echo $quiz_info['description']; ?> | TMooQuiz 2.0">
@@ -21,12 +23,12 @@
     <meta property="og:url" content="<?php echo $quiz_info['url'];?>" />
     <link rel="canonical" href="<?php echo $quiz_info['url']; ?>" />
     <meta property="og:site_name" content="PESTHUBT.COM | Ứng dụng tạo và chia sẻ đề thi trắc nghiệm trực tuyến" />
-    <link href="favicon.ico" rel=”shortcut icon” />
+    <link href="<?=base_url()?>favicon.ico" rel=”shortcut icon” />
     <script src="<?=base_url()?>assets/js/jquery-3.1.1.min.js"></script>
     <link href="<?=base_url()?>assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?=base_url()?>assets/web/css/style.css" rel="stylesheet">
+    <link href="<?=base_url()?>assets/js/card.css" rel="stylesheet">
     <link href="<?=base_url()?>assets/fonts/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="<?=base_url()?>assets/css/animate.css">
     <?php if (!empty($current_id)): ?>
         <script type="text/javascript">
         $(function(){
@@ -34,7 +36,7 @@
         })
         </script>
     <?php endif ?>
-    <?php if ($data_user['vip'] != 1): ?>
+    <?php if ($data_user['vip'] != 1 && isset($quiz_info['quiz_view'])): ?>
       <!-- Popunder Code-->
       <script type="text/javascript" data-cfasync="false">
       /*<![CDATA[/* */
@@ -42,7 +44,7 @@
         _pop.push(['siteId', 2073430]);
         _pop.push(['minBid', 0]);
         _pop.push(['popundersPerIP', 50]);
-        _pop.push(['delayBetween', 1800]);
+        _pop.push(['delayBetween', 300]);
         _pop.push(['default', false]);
         _pop.push(['defaultPerDay', 0]);
         _pop.push(['topmostLayer', false]);

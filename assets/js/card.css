@@ -1,0 +1,234 @@
+.banner-admin-top {
+    margin-top: 10px;
+}
+
+/* Css modal banner */
+#modal-banner .modal-dialog button.close {
+    position: absolute;
+    right: 0;
+    opacity: 1;
+    width: 21px;
+    background: #dcdada;
+    border-radius: 100%;
+}
+
+/* Css modal card */
+.card-pay .card-content .modal-header {
+	background: #16A085;
+	color: #fff;
+}
+.alert-error {
+	background: #C0392B;
+	color: #fff;
+	padding: 10px;
+	margin: 0 15px;
+}
+.card-pay .card-content .modal-content {
+	border: 3px solid #16a085;
+}
+.alert-error p {
+	margin: 0;
+}
+@media (min-width: 768px) {
+	.card-content {
+	    width: 90%;
+	}
+    #modal-banner .modal-dialog {
+        width: 65%;
+    }
+}
+.modal-intro {
+	margin-top: 20px;
+}
+.history-quiz .panel-default,
+.modal-intro .vip-intro .panel-default{
+	border: 1px solid #27AE60;
+}
+.history-quiz .panel-heading,
+.vip-intro .panel-heading {
+	border: 1px solid #27AE60;
+    color: white;
+    background-color: #27AE60;
+}
+.vip-intro .panel-body p#item-1 {
+	font-weight: bold;
+}
+.vip-intro .panel-body p .fa-check-circle {
+	color: #02b54e;
+	font-size: 18px;
+}
+.btn-active-vip {
+    background: #27AE60;
+    color: #fff;
+}
+.current-balance {
+	color: #27AE60;
+	font-weight: bold;
+	font-size: 18px;
+}
+.btn-active-vip:hover {
+    background: #16A085;
+    color: #fff;
+}
+#alert-login a {
+	color: #27AE60;
+}
+.alert-primary {
+	background: #16A085;
+	color: #fff;
+}
+.alert-card-error {
+	background: #C0392B;
+    color: #fff;
+}
+.card-form blockquote {
+	border-left: 5px solid #27ae60;
+	font-size: 14px;
+}
+
+/* Css modal User */
+#modalUser .avatar {
+    text-align: center;
+    border: 3px solid #16a085;
+    height: 150px;
+    border-radius: 100%;
+    width: 150px;
+    margin: 0 auto;
+    background: #e7e7e7;
+    overflow: hidden;
+    left: 10px;
+    position: absolute;
+    z-index: 10;
+}
+#modalUser .info img.img-vip {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto;
+}
+#modalUser .profile .img-hubt img {
+	width: 100%;
+	height: 100%;
+}
+#modalUser .modal-content {
+	border: 3px solid #16a085;
+}
+#modalUser .modal-header {
+	background: #16A085;
+    color: #fff;
+}
+    
+#modalUser .profile {
+    padding: 10px;
+    margin-bottom: 0;
+    position: relative;
+    height: 210px;
+    overflow: hidden;
+}
+#modalUser .profile .img-hubt {
+	position: absolute;
+	top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+#modalUser .data-footer {
+	border-bottom: 5px solid #126756
+}
+#modalUser .data-footer .clearfix {
+    border: 1px solid #16a085;
+    background: #16a085;
+}
+#modalUser .data-footer .info {
+    margin: 10px 0;
+    color: #fff;
+}
+.btn-social-icon {
+    position: relative;
+    padding-left: 44px;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 34px;
+    width: 34px;
+    padding: 0;
+}
+.btn-facebook {
+    color: #fff;
+    background-color: #3b5998;
+    border-color: rgba(0,0,0,0.2);
+}
+.btn-social-icon :first-child {
+    border: none;
+    text-align: center;
+    width: 100% !important;
+}
+.btn-social-icon>:first-child {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 32px;
+    line-height: 34px;
+    font-size: 1.6em;
+    text-align: center;
+    border-right: 1px solid rgba(0,0,0,0.2);
+}
+a.btn-facebook:hover {
+	color: #fff;
+	background: #324c82;
+}
+.profile .info-action {
+    position: absolute;
+    bottom: 6px;
+    z-index: 20;
+    left: 45px;
+}
+.profile .info-action .btn-love {
+    border-radius: 100%;
+    height: 40px;
+    width: 40px;
+}
+.profile .info-action .btn-like {
+    border-radius: 100%;
+    height: 40px;
+    width: 40px;
+    /* background: #4080ff; */
+}
+.profile .info-action .btn-like i {
+    font-size: 16px;
+}
+.dropdown-messages {
+    min-width: 300px;
+    max-height: 400px; 
+    overflow: auto;
+}
+#total-mess {
+    margin-top: 0px;
+    height: 20px;
+    padding: 3px 7px;
+    border-radius: 100%;
+    background: #d9534f;
+    font-size: 12px;
+    color: #fff;
+}
+.timeline-active {
+    background : #d9534f !important;
+}
+
+.navbar-default .navbar-nav>.open>a,
+ .navbar-default .navbar-nav>.open>a:hover,
+ .navbar-default .navbar-nav>.open>a:focus {
+    background-color: #428bca;
+ }
+
+/* css dashboard */
+.history-item {
+    padding: 10px;
+}
+.history-item .meta-user a {
+    display: inline-block;
+}
+.history-item .meta-user .icon-avt img {
+    display: inline-block !important; 
+}

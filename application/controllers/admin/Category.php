@@ -9,7 +9,7 @@ class Category extends Admin_Controller {
     	if ($this->mcode->admin_logged_in()) {
     		$this->data['category'] = $this->db->query("SELECT * FROM category")->result();
     		//print_r($this->data['category']);
-    		$this->render('admin/category/category_view');
+    		$this->render('admin/category/category_view','vip');
     	} else {
     		redirect('login','refresh');
     	}
@@ -17,7 +17,7 @@ class Category extends Admin_Controller {
 
     public function create(){        
     	if ($this->mcode->admin_logged_in()) {    		
-    		$this->render('admin/category/category_create');
+    		$this->render('admin/category/category_create','vip');
     	} else {
     		redirect('login','refresh');
     	}
@@ -44,7 +44,7 @@ class Category extends Admin_Controller {
     	if ($this->mcode->admin_logged_in()) {
     		$this->data['cat'] = $this->db->query("SELECT * FROM category WHERE category_id = $id")->row_array();
     		//print_r($this->data['cat']);
-    		$this->render('admin/category/category_edit');
+    		$this->render('admin/category/category_edit','vip');
     	} else {
     		redirect('login','refresh');
     	}

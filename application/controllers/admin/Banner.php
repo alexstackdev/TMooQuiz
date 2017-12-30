@@ -31,7 +31,7 @@ class Banner extends Admin_Controller {
     	$position = $this->input->post('position');
     	$success_alert = "<script>$('#formCreateBanner .alert').attr('class', 'alert alert-success');</script>";
     	$data = array(
-    		"banner_id"	=>	"",
+    		"banner_id"	=>	null,
     		"title"		=>	$banner_title,
     		"img"		=>	$link_img,
     		"link"		=>	$link_banner,

@@ -28,6 +28,9 @@ class Create extends Admin_Controller {
                 )
             );  
             $this->data['captcha'] = create_captcha($vals);
+            if ($this->_user['vip'] == 1) {
+                return $this->render('admin/quiz/create_view','vip');
+            }
     		$this->render('admin/quiz/create_view');
     	}
     	else
@@ -49,7 +52,7 @@ class Create extends Admin_Controller {
         $cat_id = $this->db->query("SELECT category_id FROM category WHERE category = '$category' ")->row_array(); // lấy category_id
         $time = date('Y-m-d H:i:s');
         $success_alert = "<script>$('#formCreateQuiz .alert').attr('class', 'alert alert-success');</script>";
-        $stt = $this->input->post('status');
+        $stt = $this->input->post('stt');
         if ($check_content) {
             $check_quiz = 1;
         }
@@ -58,7 +61,6 @@ class Create extends Admin_Controller {
             $stt = 2;
         }
         $data = array(
-            "quiz_id" => "",
             "category_id" => $cat_id['category_id'],
             "user_id" => $user_id,
             "title" => $this->mcode->clean($title_quiz),
@@ -73,6 +75,10 @@ class Create extends Admin_Controller {
 
         if ($this->db->insert("quiz",$data)) {
             $id = $this->db->insert_id();
+            $device = $this->agent->is_mobile() ? 2 : 1;
+            $user = $this->_user;
+            $content = "tạo quiz ".$this->mcode->clean($title_quiz);
+            $this->mcode->addHistory(4,$user,$id,$content,$device);
             echo $success_alert.'Tạo đề thi thành công,<a href="'.base_url().'admin/upload/img/'.$id.'.html" title="Upload ảnh"> nhấn vào đây để upload ảnh!</a>';
         }
         else
@@ -80,6 +86,30 @@ class Create extends Admin_Controller {
             echo 'Đã xảy ra lỗi , vui lòng thử lại.';
         }
          
+    }
+
+    public function preview(){ 
+        $user_id = $this->input->post('user_id');
+        $title_quiz = $this->input->post('title_quiz'); // tên đề
+        $body_quiz = $this->input->post('body_quiz'); // các câu hỏi
+        
+        $content = $this->mcode->toQuiz($this->mcode->clean($body_quiz));
+        if ($content) {
+            $this->data['qs'] = array(
+            "title" => $this->mcode->clean($title_quiz),
+            "content"  => $content
+            );
+        }
+        else {
+            $this->data['qs'] = array(
+            "title" => 'Lỗi cấu trúc'
+            );
+            $this->data['error'] = 'Cấu trúc đề sai sẽ không hiển thị. Vui lòng xem hướng dẫn và ví dụ !';
+        }
+        
+        $dt = $this->load->view('admin/quiz/quiz_preview',$this->data,TRUE);
+        $this->output->set_output($dt); 
+        
     }
 }
 ?>

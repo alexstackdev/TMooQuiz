@@ -1,6 +1,13 @@
 <div id="page-wrapper">
 	<div class="container-fluid">
-		<h1 class="page-header title" data-url="<?=base_url()?>admin/listquiz/delete"><span>Danh sách đề thi của tôi</span></h1>
+		<h1 class="page-header title" data-url="<?=base_url()?>admin/listquiz/delete"><span>Danh sách đề thi của tôi</span>
+		<div class="banner-admin-top">
+			<?php if ($data_user['vip'] != 1) {
+				$this->mcode->get_banner(8);
+			} ?>
+		</div>
+		</h1>
+		<div class="clearfix"></div>
 		<?php if ($quiz == null) { ?>
 			<div class="alert alert-danger">Bạn chưa có đề thi nào !</div>
 		<?php }

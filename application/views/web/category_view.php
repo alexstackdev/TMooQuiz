@@ -10,14 +10,13 @@
 			<div class="row">				
 				<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
 					<div class="tab-content">
-						<div class="banner-category-1 text-center" style="margin-bottom: 1em; ">
+						<div class="banner-category-top text-center" style="margin-bottom: 1em; ">
 							<?php if ($data_user['vip'] != 1): ?>
-								<script src="//www.adsptp.com/15039-728x90.js"></script>
-								<?php $this->mcode->get_banner(1); ?>	
+								<?php $this->mcode->get_banner(2); ?>	
 							<?php endif ?>											
 						</div>
 					<!-- Nav tabs -->
-					<ul class="nav nav-tabs nav-quiz" role="tablist">
+					<ul class="nav nav-tabs nav-quiz" role="tablist" data-user="<?=base_url()?>admin/profile/preview">
 					  <li class="active"><a href="#top-view" role="tab" data-toggle="tab" class=""><i class="fa fa-bar-chart"></i> Top View</a></li>
 					  <li><a href="#new" role="tab" data-toggle="tab" class=""><i class="fa fa-rss"></i> Mới nhất</a></li>
 					</ul>

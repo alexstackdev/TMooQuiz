@@ -19,9 +19,10 @@ class Login extends Public_Controller {
     public function get_login(){
     	$username = $this->input->post('username');
     	$pass = $this->input->post('pass');
-    	// Các biến chứa code JS về thông báo
         $url = $this->session->back;
-    	if ($this->mcode->admin_login($username,$pass)) {
+        if ($this->mcode->admin_login($username,$pass)) {
+            $ss_id = session_id();
+            $this->db->where('username',$username)->update('user',array('login' => $ss_id));
             if ($url) {
                 return redirect($url,'refresh');
             }

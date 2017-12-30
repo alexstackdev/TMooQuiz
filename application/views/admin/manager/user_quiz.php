@@ -5,12 +5,13 @@
 		<?php else: ?>
 			<h1 class="page-header title active-title" data-url="<?=base_url()?>admin/manager_user/delete_quiz"><span>Quản lý thành viên</span></h1>
 			<div class="table-responsive">
-				<table class="table table-hover">
+				<table width="100%" class="table table-striped table-bordered table-hover display" id="dataTables-example">
 					<thead>
 						<tr>
 							<th>ID</th>
 							<th>Quiz name</th>
 							<th>Lượt xem</th>
+							<th>Lượt download</th>
 							<th>Action</th>
 						</tr>						
 					</thead>
@@ -21,6 +22,7 @@
 								
 								<td><?php echo '<a href="'.base_url().'quiz/'.$item->quiz_id.'/'.$item->quiz_slug.'.html">'.$item->title.'</a>' ; ?></td>
 								<td><?php echo $item->viewed; ?></td>
+								<td><?php echo $item->download; ?></td>
 								<td>
 									<?php
 									$url = base_url()."admin/listquiz/edit/$item->quiz_id.html";

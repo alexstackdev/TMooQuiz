@@ -9,7 +9,8 @@ class Mcode extends CI_Model {
         $username= $user;
         $password=$this->mcode->hash($pass);
         $item=$this->db->query("select * from user where username='$username' and password='$password' ")->row_array();
-        if($username==$item['username'] && $password==$item['password']) {        
+        
+        if($username==$item['username'] && $password==$item['password']) {
             $this->session->set_userdata($item);
             return true;
         }
@@ -27,6 +28,98 @@ class Mcode extends CI_Model {
         }
     }
 
+    public function getCate($id){
+        $cate = array(
+            '0' => 'Khác',
+            '1' => 'CNTT',
+            '2' => 'TA',
+            '3' => 'KT',
+            '4' => 'TM',
+            '5' => 'NH',
+            '6' => 'QLKD',
+            '7' => 'DL',
+            '8' => 'K Tế',
+            '9' => 'GDQP',
+            '10' => 'Y'
+        );
+        //echo $cate[$id];die;
+        return $cate[$id];
+    }
+
+    public function addHistory($type = 1,$user = null,$quiz_id = null,$content = null,$device =1){
+        $data = array(
+                "user_id" => $user['user_id'],
+                "quiz_id" => $quiz_id,
+                "content" => $content,
+                "type" => $type,
+                "device" => $device,
+                "created_at" => time()
+            );
+        $this->db->insert('history_action',$data);
+    }
+
+    public function convertTime($time){
+        $t = time() - $time ;
+        if ($t < 60) {
+            $str = "$t giây trước";
+        }
+        elseif ($t < 3600) {
+            $m = $t/60;
+            $m = round($m,0);
+            $str = "$m phút trước";
+        }
+        elseif ($t < 3600*24) {
+            $h = $t/3600;
+            $h = round($h,0);
+            $str = "$h giờ trước";                    
+        }else {
+            $d = $t/(3600*24);
+            $d = round($d,0);
+            $str = "$d ngày trước";  
+        }
+        return $str;
+    }
+
+    public function check_login(){
+        if ($this->admin_logged_in()) {
+            $ss_id = session_id();
+            $user_id = $this->session->user_id;
+            $item = $this->db->query("SELECT user_id FROM user WHERE user_id = $user_id AND login = '$ss_id' ")->row_array();
+            if (!$item) {
+                $arr = array('user_id','username','password','permission','fullname','vip','balance');
+                $this->session->unset_userdata($arr);
+                $this->session->set_flashdata('error','Tài khoản của bạn đã đăng nhập ở nơi khác !') ;
+                if ($this->input->is_ajax_request()) {
+                    $js = "<script>alert('Tài khoản của bạn đã bị đăng nhập ở nơi khác !');
+            location.href = '';</script>";
+                    echo $js;
+                    return;
+                }
+                return redirect('login','refresh');
+            }
+        }
+    }
+    public function getTimeVip($date){
+        $time = (strtotime($date)-time())/(60*60*24);
+        $time = round($time,0);
+        return $time+1;
+    }
+
+    public function check_vip($user)
+    {   
+        if ($user['vip'] == 1) {
+            $time = (strtotime($user['vip_date'])-time())/(60*60*24);
+            $time = round($time,0);
+            if ($time < 1) {
+                $data = array(
+                    "vip" => 0
+                );
+                $this->db->where('user_id',$user['user_id']);
+                $this->db->update('user',$data);
+            }
+        }        
+    }
+
     public function get_data_user(){
         if ($this->admin_logged_in()) {
             $id = $this->session->user_id;
@@ -35,22 +128,28 @@ class Mcode extends CI_Model {
         }
     }
 
-    public function get_cache_data($params,$sql = null, $type = 0,$time = 600){
-        if (! $data = $this->cache->get($params)) {
-            if ($type == 1) {
+    public function get_cache_data($params = null,$sql = null, $type = 0,$time = 600){
+        /*if (! $data = $this->cache->get($params)) {
+                    
+            $this->cache->save($params,$data,$time);
+        }*/
+        if ($type == 1) {
                 $data = $this->db->query($sql)->result();
             }else {
                 $data = $this->db->query($sql)->row_array();
-            }            
-            $this->cache->save($params,$data,$time);
-        }
+            }    
         return $data;
     }
 
     public function get_position($id){
         $item = $this->db->query("SELECT banner_position FROM position WHERE banner_id = $id")->result();
-        foreach ($item as $key => $val) {
-            echo "<p>$val->banner_position</p>";
+        $position = $this->positionArray();
+        foreach ($item as $val) {
+            foreach ($position as $i => $label) {
+                if ($val->banner_position == $i) {
+                    echo "<p>$label</p>";
+                }
+            }            
         }
     }
 
@@ -241,6 +340,22 @@ class Mcode extends CI_Model {
             echo $viewed['quiz_view'];
         }
         
+    }
+
+    /* Array value position */
+    public function positionArray(){
+        $data = array(
+            "1" => "Homepage Top 1",
+            '2' => 'Category Top 2',
+            '3' => 'Quiz Left 3',
+            '4' => 'Quiz Right 4',
+            '5' => 'Quiz Top 5',
+            '6' => 'Login Left 6',
+            '7' => 'Login Right 7',
+            '8' => 'Admin Title Top 8',
+            '9' => 'Baner Popup Quiz'
+        );
+        return $data;
     }
     
 } // end class

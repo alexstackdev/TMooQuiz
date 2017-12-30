@@ -5,21 +5,28 @@
 		<?php else: ?>
 			<h1 class="page-header title active-title" data-url="<?=base_url()?>admin/manager_user/delete"><span>Quản lý thành viên</span></h1>
 			<div class="table-responsive">
-				<table class="table table-hover">
+				<table width="100%" class="table table-striped table-bordered table-hover display" id="dataTables-example">
 					<thead>
 						<tr>
 							<th>ID</th>
 							<th>Username</th>
 							<th>Fullname</th>
-							<th>Tổng đề thi</th>
-							<th>Tổng lượt xem</th>
+							<th>Msv</th>
+							<th>Lớp</th>
+							<th>Khoa</th>
+							<th>Balance</th>
+							<th>Vip</th>
+							<th>Time</th>
+							<th>Quiz</th>
+							<th>View</th>
+							<th>Download</th>
 							<th>Action</th>
 						</tr>						
 					</thead>
 					<tbody>
 						<?php foreach ($user as $key => $item): ?>
 							<tr id="<?php echo "id-$item->user_id";?>">
-								<td><?php echo $item->user_id;?></td>
+								<td><a href="<?php echo base_url().'admin/manager_user/user_edit/'.$item->user_id;?>"><?php echo $item->user_id;?></a></td>
 								<td><?php echo $item->username; ?></td>
 								<td>
 								<?php  
@@ -30,6 +37,12 @@
 									}									
 								?>									
 								</td>
+								<td><?php echo $item->msv; ?></td>
+								<td><?php echo $item->class ?></td>
+								<td><?php echo $this->mcode->getCate($item->khoa); ?></td>
+								<td><?php echo $item->balance; ?></td>
+								<td><?php echo $item->vip; ?></td>
+								<td><?php echo date('d/m/Y',strtotime($item->vip_date)); ?></td>
 								<td>
 								<?php 
 									if ($userdata['permission'] == 2) {
@@ -40,6 +53,7 @@
 								?>									
 								</td>
 								<td><?php echo $item->total_view; ?></td>
+								<td><?php echo $item->total_download; ?></td>
 								<td>
 									<?php if ($item->permission == 2) {
 										echo 'Quản trị viên';
@@ -47,13 +61,13 @@
 										echo '<button type="button" class="btn btn-danger" onclick="delete_user('.$item->user_id.')"><i class="fa fa-trash" ></i> Xóa</button>';
 									}?>								
 								</td>
+
 							</tr>
 						<?php endforeach ?>						
 					</tbody>
 				</table>
 			</div>
 			<div class="clearfix"></div>
-			<div class="pagination-page"><?=$this->pagination->create_links();?></div>
 		<?php endif ?>		
 	</div>
 </div>

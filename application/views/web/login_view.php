@@ -4,7 +4,14 @@
 </header><!-- /header -->
 <div class="container"> 
     <div class="row">
-        <div class="col-md-6 col-md-offset-3">
+        <div class="col-md-3">
+            <div class="banner-left text-center">
+                <?php if ($data_user['vip'] != 1) {
+                    $this->mcode->get_banner(6);
+                }  ?>
+            </div>
+        </div>
+        <div class="col-md-6">
             <div class="login-form panel panel-primary">
                 <div class="panel-heading">
                     <h3>Đăng nhập</h3>
@@ -29,12 +36,23 @@
                                 <?php echo $this->session->error; ?>
                             </div>
                         <?php endif ?>
-                        
+                        <?php if ($this->session->success): ?>
+                            <div class="alert alert-primary" id="alert">
+                                <?php echo $this->session->success; ?>
+                            </div>
+                        <?php endif ?>
                         
                         <div class="alert alert-warning">Bạn chưa có tài khoản ? <a href="<?=base_url()?>signup.html" title="Đăng ký"> Đăng ký </a>ngay</div>
                     </form>
                 </div>
             </div>           
+        </div>
+        <div class="col-md-3 hidden-xs">
+            <div class="banner-right text-center">                    
+                <?php if ($data_user['vip'] != 1) {
+                    $this->mcode->get_banner(7);
+                }  ?>
+            </div>
         </div>
     </div>
 </div>

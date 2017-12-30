@@ -15,22 +15,21 @@
             <a href="<?=base_url()?>admin/create.html" ><i class="fa fa-plus"></i> Tạo đề thi</a>
         </li>
         <?php if ($this->mcode->admin_logged_in()): ?>
-            <li class="user">
-                <a href="<?=base_url()?>admin/listquiz.html" title="Trang quản trị"><i class="fa fa-user"></i> <?php echo $this->session->fullname; ?></a>
-            </li>
-            <?php if ($data_user['permission'] == 2): ?>
                 <li class="user dropdown "  >
                     <a href="#" data-toggle="dropdown">
                         <i class="fa fa-user"></i> <?php echo $data_user['fullname']; ?> <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
                         <li class="dropdown-item" >
-                            <a href="#">
-                                <i class="fa fa-credit-card"></i> Số tiền : <?php echo $data_user['balance'].' VND'; ?>
+                            <a href="<?=base_url()?>admin/listquiz.html"><i class="fa fa-dashboard fa-fw"></i> Quản lý đề thi</a>
+                        </li>
+                        <li class="dropdown-item" >
+                            <a href="#" onclick="return false;">
+                                <i class="fa fa-credit-card"></i> Số tiền : <span id="user-balance"><?php echo $data_user['balance']; ?></span> VNĐ
                             </a>                    
                         </li>
                         <li class="dropdown-item">
-                            <a href="#">
+                            <a href="#" class="menuShowModal" data-url="<?=base_url()?>index/card_view">
                                 <i class="fa fa-bank"></i> Nạp tiền
                             </a>
                         </li>
@@ -39,7 +38,6 @@
                         </li>
                     </ul>
                 </li>
-            <?php endif ?>  
             <li class="logout">
                 <a href="<?=base_url()?>signout.html"><i class="fa fa-sign-out"></i> Đăng xuất</a>
             </li>

@@ -29,11 +29,19 @@ $(function() {
 	$audio4 = document.getElementById("QuadraKill");
 	$audio5 = document.getElementById("PentaKill");
 	$audio6 = document.getElementById("Legendary");
+	
+	$('li.cate').click(function () {
+        $('[data-toggle="offcanvas"]').click();
+        return false;
+    })
 });
 function update_view(){
 	$url = $('.quiz').attr('data-url');
 	$quiz_id = $('.quiz-id').text();
 	$viewed = $('.quiz-viewed').text();
+	$(document).ajaxStart(function() {
+        $('.loader').hide();
+    });
 	$.ajax({
 		url: $url,
 		type: 'post',

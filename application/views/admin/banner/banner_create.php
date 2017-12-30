@@ -8,6 +8,7 @@
                         <label>Tên chiến dịch</label>
                         <input type="text" class="form-control" id="title_banner" placeholder="Nhập tên chiến dịch">
                     </div>
+                    <textarea id="input" class="form-control" rows="3"></textarea>
                     <div class="form-group">
                         <label>link ảnh</label>
                         <input type="text" name="" id="link_img" class="form-control" required="required" >
@@ -24,12 +25,14 @@
                     </div>
                     <div class="form-group">
                         <label>Vị trí banner</label>
-                        
-                        <?php for ($i = 1 ; $i <= 10; $i++): ?>
-                            <label class="checkbox-inline">
-                              <input type="checkbox" class="position" id="<?php echo 'checkbox-'.$i; ?>" value="<?php echo $i; ?>"> <?php echo $i; ?>
-                            </label>
-                        <?php endfor ?>
+                        <?php 
+                            $position = $this->mcode->positionArray();
+                         ?>
+                        <select name="position" class="position form-control" multiple size="10">
+                            <?php foreach ($position as $key => $value): ?>
+                                <option value="<?php echo $key ; ?>"><?php echo $value; ?></option>
+                            <?php endforeach ?>
+                        </select>
                     </div>
                     <button class="btn btn-primary" id="submit_create_banner"><i class="fa fa-check-square-o"></i> Ok</button>
                     <input type="reset" class="rs hidden" value="">

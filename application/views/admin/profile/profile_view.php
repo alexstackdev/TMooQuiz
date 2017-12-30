@@ -67,12 +67,16 @@
                                   <input type="text" class="form-control" id="myname" value="<?php echo $user['fullname']; ?>" placeholder="Nhập tên bạn">
                                 </div>
                             </div>
-                            <div class="form-group balance">
+                            <!-- <div class="form-group balance">
                                 <label for="username" class="col-sm-4 control-label">Số tiền :</label>
-                                    <div class="col-sm-8 col-md-4">
-                                      <p class="form-control-static"><?php echo $data_user['balance'].' VND'; ?></p>
-                                </div>
-                            </div>
+                                <div class="col-sm-8 col-md-4">
+                                    <p class="form-control-static"><?php //echo $data_user['balance'].' VND'; ?> 
+                                        <button type="button" class="btn btn-primary showModal" data-url="<?php //base_url()?>index/card_view">Nạp tiền</button>
+                                        <button class="btn btn-active-vip" onclick="active_vip()" data-url="http://localhost/TMooQuiz/index/active_vip" data-balance="<?php// echo $user['balance']; ?>">Nâng cấp VIP ngay</button>                                             
+                                    </p>
+                                </div>                                
+                            </div> -->
+                            <div class="alert text-center hidden" id="alert-active-vip" style="margin-top: 10px;"></div>
                             <div class="form-group">
                                 <label for="my-gmail" class="col-sm-4 control-label">Gmail :</label>
                                 <div class="col-sm-8 col-md-4">

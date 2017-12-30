@@ -6,18 +6,7 @@ $('#submit_create_banner').on('click', function() {
     $link_img = $('#link_img').val();
     $link_banner = $('#link_banner').val();
     $deadline = $('#deadline').val();
-    $size = $('.position').length;
-    $checkbox = [];
-    $j = 0;
-    for (var i = 0; i < $size; i++) {
-        $id = i + 1;        
-        $check = $('#checkbox-'+$id+'');
-        if ($check.prop('checked')) {
-            $val = $check.val();
-            $checkbox[$j] = $val;
-            $j++;
-        }
-    }
+    $position = $('.position').val();
     banner_ajax_creat();
 });
 
@@ -32,7 +21,7 @@ function banner_ajax_creat(){
                 link_img : $link_img,
                 link_banner : $link_banner,
                 deadline : $deadline,
-                position : $checkbox
+                position : $position
             // Thực thi khi gửi dữ liệu thành công
             }, success : function(data) {
                 $('#formCreateBanner .alert').removeClass('hidden');
@@ -53,19 +42,7 @@ $('#submit_edit_banner').on('click', function() {
     $link_img = $('#link_img').val();
     $link_banner = $('#link_banner').val();
     $deadline = $('#deadline').val();
-    $size = $('.position').length;
-    $checkbox = [];
-    $j = 0;
-    for (var i = 0; i < $size; i++) {
-        $id = i + 1;        
-        $check = $('#checkbox-'+$id+'');
-        if ($check.prop('checked')) {
-            $val = $check.val();
-            $checkbox[$j] = $val;
-            $j++;
-        }
-    }
-    console.log($checkbox);
+    $position = $('.position').val();
     banner_ajax_edit();
 });
 
@@ -81,7 +58,7 @@ function banner_ajax_edit(){
                 link_img : $link_img,
                 link_banner : $link_banner,
                 deadline : $deadline,
-                position : $checkbox
+                position : $position
             // Thực thi khi gửi dữ liệu thành công
             }, success : function(data) {
                 $('#formEditBanner .alert').removeClass('hidden');

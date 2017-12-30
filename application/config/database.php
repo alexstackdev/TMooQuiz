@@ -75,10 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => 'mysql',
-	'database' => 'quiz',
+	'hostname' => '45.252.248.20',
+	'username' => 'trungpha_quiz',
+	'password' => 'hoidelamgi1!',
+	'database' => 'trungpha_quiz',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

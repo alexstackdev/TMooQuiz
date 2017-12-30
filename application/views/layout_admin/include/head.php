@@ -6,12 +6,14 @@
     
     <title>Quiz Admin</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <link href="favicon.ico" rel=”shortcut icon” />
+    <link href="<?=base_url()?>favicon.ico" rel=”shortcut icon” />
+    <link rel="manifest" href="<?=base_url()?>manifest.json">
     <script src="<?=base_url()?>assets/js/jquery-3.1.1.min.js"></script>
     <link href="<?=base_url()?>assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?=base_url()?>assets/admin/css/style.css" rel="stylesheet">
     <link href="<?=base_url()?>assets/fonts/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="<?=base_url()?>assets/css/animate.css">
+    <link href="<?=base_url()?>assets/js/card.css" rel="stylesheet">
+    <script src="<?=base_url()?>assets/js/card.js"></script>
 </head>
 <body>
 <script>

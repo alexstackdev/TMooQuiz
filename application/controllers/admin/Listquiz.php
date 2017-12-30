@@ -23,6 +23,9 @@ class Listquiz extends Admin_Controller {
             $start = $page*$config['per_page']-$config['per_page'];
             $limit = $start.",".$config['per_page'];
             $this->data['quiz'] = $this->db->query("SELECT quiz.quiz_id,quiz.title,quiz.quiz_slug,quiz.viewed,quiz.created,quiz.status,category.category FROM quiz JOIN category ON quiz.category_id = category.category_id WHERE user_id = $user_id ORDER BY created DESC limit $limit")->result();
+            if ($this->_user['vip'] == 1) {
+                return $this->render('admin/quiz/listquiz_vip','vip');
+            }
     		$this->render('admin/quiz/listquiz_view');
     	}
     	else
@@ -35,6 +38,9 @@ class Listquiz extends Admin_Controller {
         if ($this->mcode->admin_logged_in()) {
             $this->data['cat'] = $this->db->query("SELECT * FROM category")->result();
             $this->data['quiz'] = $this->db->query("SELECT * FROM quiz WHERE quiz_id = $id ")->row_array();
+            if ($this->_user['vip'] == 1) {
+                return $this->render('admin/quiz/edit_view','vip');
+            }
             $this->render('admin/quiz/edit_view');
         }
         else
@@ -72,6 +78,10 @@ class Listquiz extends Admin_Controller {
         $this->db->where('quiz_id',$quiz_id);
         if ($this->db->update('quiz',$data)) {
             $this->cache->delete($quiz_id);
+            $device = $this->agent->is_mobile() ? 2 : 1;
+            $user = $this->_user;
+            $content = $user['fullname'] ." đã chỉnh sửa đề thi ".$this->mcode->clean($title);
+            $this->mcode->addHistory(5,$user,$quiz_id,$content,$device);
             echo $success_alert.'Chỉnh sửa thành công !';
         }
         else

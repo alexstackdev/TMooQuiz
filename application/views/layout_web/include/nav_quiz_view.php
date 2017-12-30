@@ -30,8 +30,41 @@
                     <li class="functions">
                         <input type="checkbox"  id="muted"  /> <span>Tắt âm thanh</span>
                     </li>
+                    <?php if (isset($qs) && $qs['quiz_id']): ?>
+                        <li class="functions download">
+                            <?php if ($data_user['vip'] == 1): ?>
+                                <a href="<?=base_url().'download/quiz/'.$qs['quiz_id']?>">
+                                    <button>Download word</button>
+                                </a>                            
+                            <?php else: ?>
+                                <?php if ($qs['quiz_id'] == '563'):?>
+                                    <a href="<?=base_url().'download/quiz/'.$qs['quiz_id']?>">
+                                        <button>Download word</button>
+                                    </a> 
+                                <?php else: ?>
+                                    <button class="modalCard" data-url="<?=base_url()?>index/card_view">Download word</button>
+                                <?php endif ?>                                
+                            <?php endif ?>
+                        </li>
+                    <?php endif ?>                    
                 </ul>
                 <ul class="nav navbar-nav navbar-right nav-homepage">
+                    <li class=" cate">
+                        <a href="#"><i class="fa fa-list-ul"></i> Danh mục</a>
+                    </li>
+                    <!-- <li class="dropdown">
+                        <a href="#" data-toggle="dropdown">
+                            <i class="fa fa-gamepad"></i> Game giải trí <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                            <li class="dropdown-item">
+                                <a href="<?=base_url()?>game/pikachu.html" target="_blank"><span><img src="<?=base_url()?>uploads/pikachu-icon.png" width="18px" height="18px"></span> Pikachu</a>
+                            </li>
+                            <li class="dropdown-item">
+                                <a href="<?=base_url()?>game/game2048.html" target="_blank"><span><img src="<?=base_url()?>uploads/apple-touch-icon.png" width="18px" height="18px"></span> 2048</a>
+                            </li>
+                        </ul>
+                    </li> -->
                     <li>
                         <a href="<?=base_url()?>admin/create.html"><i class="fa fa-plus"></i> Tạo đề thi</a>
                     </li>
@@ -42,12 +75,15 @@
                             </a>
                             <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
                                 <li class="dropdown-item" >
-                                    <a href="#">
-                                        <i class="fa fa-credit-card"></i> Số tiền : <?php echo $data_user['balance'].' VND'; ?>
+                                    <a href="<?=base_url()?>admin/listquiz.html"><i class="fa fa-dashboard fa-fw"></i> Quản lý đề thi</a>
+                                </li>
+                                <li class="dropdown-item" >
+                                    <a href="#" onclick="return false;">
+                                        <i class="fa fa-credit-card"></i> Số tiền : <span id="user-balance"><?php echo $data_user['balance']; ?></span> VNĐ
                                     </a>                    
                                 </li>
                                 <li class="dropdown-item">
-                                    <a href="#">
+                                    <a href="#" class="menuShowModal" data-url="<?=base_url()?>index/card_view">
                                         <i class="fa fa-bank"></i> Nạp tiền
                                     </a>
                                 </li>

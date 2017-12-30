@@ -14,7 +14,7 @@
 								<th>Ảnh</th>
 								<th>Link</th>
 								<th>Hết hạn</th>
-								<th>Vị trí</th>
+								<th width="100px">Vị trí</th>
 								<th>Hành động</th>
 							</tr>
 						</thead>
@@ -25,7 +25,7 @@
 								<td><?php echo $item->title; ?></td>
 								<td>
 								<?php 
-								echo $item->img;
+								echo "<p style='width:250px;word-break: break-all;'>$item->img</p>";
 								echo "<p><img class='img-responsive' src='$item->img' style='max-width:200px;max-height:80px;'/></p>";
 								?>		
 								</td>
