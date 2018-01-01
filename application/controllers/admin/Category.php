@@ -29,7 +29,8 @@ class Category extends Admin_Controller {
 	    	$cat_slug = url_title($this->mcode->stripUnicode(strtolower($cat)));
 	    	$data = array(
 	    		"category"  =>	$cat,
-	    		"cat_slug"	=>	$cat_slug
+	    		"cat_slug"	=>	$cat_slug,
+                "icon"  =>  $this->input->post('icon')
 	    		);
 	    	if ($this->db->insert("category",$data)) {
 	    		redirect('admin/category');
@@ -57,7 +58,8 @@ class Category extends Admin_Controller {
     		$cat_slug = url_title($this->mcode->stripUnicode(strtolower($cat)));
     		$data = array(
     			"category"	=> $cat,
-    			"cat_slug"	=> $cat_slug
+    			"cat_slug"	=> $cat_slug,
+                "icon"  =>  $this->input->post('icon')
     			);
     		$this->db->where("category_id",$id);
     		if ($this->db->update('category',$data)) {

@@ -18,7 +18,8 @@
 							<tr>
 								<th>ID</th>
 								<th>Category</th>
-								<th>Slug</th>								
+								<th>Slug</th>
+                                <th>Icon</th>
 								<th>Action</th>
 							</tr>
 						</thead>
@@ -33,6 +34,10 @@
 									echo $item->cat_slug;
 								?>		
 								</td>
+                                <td>
+                                    <i class="<?php echo $item->icon; ?>"></i>
+
+                                </td>
 								<td>
 									<span><a href="<?=base_url()?>admin/category/edit/<?php echo $item->category_id; ?>" class="edit_cat"><button type="button" class="btn btn-primary">
 		  								<i class="fa fa-edit"></i> Chỉnh sửa

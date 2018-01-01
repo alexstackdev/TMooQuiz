@@ -20,8 +20,11 @@ class Index extends Public_Controller {
             'description'   => 'Trang chủ',
             'url'       => base_url()
     		);
-    	$sql_cat = "select * from category";     
-
+    	$sql_cat = "select * from category";
+        if ($this->mcode->admin_logged_in()){
+            $user_id = $this->_user['user_id'];
+            $this->data['quiz'] = $this->db->query("SELECT Count(quiz_id) as total_quiz, SUM(viewed) as total_view FROM quiz WHERE user_id = $user_id")->row_array();
+        }
         $this->data['list_category'] = $this->mcode->get_cache_data('list_category',$sql_cat,1);
         $this->view('web/homepage');
     }

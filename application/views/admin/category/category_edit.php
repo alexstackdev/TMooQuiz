@@ -1,6 +1,6 @@
 <div id="page-wrapper">
 	<div class="container-fluid">
-		<h1 class="page-header title"><span>Chỉnh sửa danh mục</span></h2>
+		<h1 class="page-header title"><span>Chỉnh sửa danh mục</span></h1>
 		<div class="row">
 			<div class="col-md-12 col-sm-12 col-xs-12">
 				<form method="POST" action="<?=base_url()?>admin/category/update" id="formCreateCategory" data-id="<?php echo $this->session->user_id; ?>">
@@ -8,6 +8,10 @@
                     	<input type="hidden" name="id" value="<?php echo $cat['category_id']; ?>">
                         <label>Tên danh mục</label>
                         <input type="text" class="form-control" id="cat_name" name="cat_name" value="<?php echo $cat['category']; ?>" placeholder="Nhập tên danh mục">
+                    </div>
+                    <div class="form-group">
+                        <label>Icon</label>
+                        <input type="text" class="form-control" id="icon" name="icon" value="<?php echo $cat['icon']; ?>" placeholder="class icon">
                     </div>
                     <button class="btn btn-primary" id="submit_create_category"><i class="fa fa-check-square-o"></i> Ok</button>
                     <input type="reset" class="rs hidden" value="">
