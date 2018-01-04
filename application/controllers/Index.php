@@ -35,12 +35,15 @@ class Index extends Public_Controller {
         $sql_cat = "select * from category";        
 
     	$this->data['list_category'] = $this->mcode->get_cache_data('list_category',$sql_cat,1);
-    	$this->data['current_id'] = $this->db->query("select category_id,category from category where cat_slug = '$slug'")->row_array();
+    	$this->data['current_id'] = $this->db->query("select * from category where cat_slug = '$slug'")->row_array();
     	$cat_id = $this->data['current_id']['category_id'];
 
         $sql_quiz_view = "SELECT *,quiz.created FROM quiz JOIN user ON quiz.user_id=user.user_id  WHERE category_id=$cat_id AND quiz.status = 1 ORDER BY viewed DESC";
         $sql_quiz_new = "SELECT *,quiz.created FROM quiz JOIN user ON quiz.user_id=user.user_id  WHERE category_id=$cat_id AND quiz.status = 1 ORDER BY quiz_id DESC";
-
+        if ($this->mcode->admin_logged_in()){
+            $user_id = $this->_user['user_id'];
+            $this->data['quiz'] = $this->db->query("SELECT Count(quiz_id) as total_quiz, SUM(viewed) as total_view FROM quiz WHERE user_id = $user_id")->row_array();
+        }
     	$this->data['quiz_view'] = $this->db->query($sql_quiz_view)->result();
     	$this->data['quiz_new'] = $this->db->query($sql_quiz_new)->result();
     	$this->data['quiz_info'] = array(
@@ -61,6 +64,10 @@ class Index extends Public_Controller {
             $this->session->set_flashdata('error','Vui lòng đăng nhập tài khoản của bạn !') ;
             return redirect('login','refresh');
         }
+        if ($this->mcode->admin_logged_in()){
+            $user_id = $this->_user['user_id'];
+            $this->data['quiz'] = $this->db->query("SELECT Count(quiz_id) as total_quiz, SUM(viewed) as total_view FROM quiz WHERE user_id = $user_id")->row_array();
+        }
         $sql_qs = "SELECT *,quiz.created FROM quiz JOIN user ON quiz.user_id=user.user_id JOIN category ON quiz.category_id = category.category_id WHERE quiz_id =' $id  ' AND quiz_slug='$slug' ";
     	$this->data['qs'] = $this->mcode->get_cache_data($id,$sql_qs,0);    	
     	$sql_cat = "select * from category";
@@ -75,13 +82,15 @@ class Index extends Public_Controller {
                 foreach ($section->array_question as $key => $question) {
                     shuffle($question->array_answer);
                 }
-            } 
+            }
+            $this->data['mixed'] = '1';
         } else {
             foreach ($content as $key => $section) {
                 foreach ($section->array_question as $key => $question) {
                     shuffle($question->array_answer);
                 }
             }
+            $this->data['mixed'] = '0';
         }
         $this->data['content'] = $content;
         $this->data['quiz_info'] = array(

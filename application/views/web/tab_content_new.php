@@ -2,7 +2,7 @@
 	<?php foreach ($quiz_new as $key => $item): ?>
 		<?php if ($key % 2 == 0): ?>
 			<div class="quiz-item" id="item-new<?php echo $item->quiz_id;?>" data-url="<?=base_url()?>quiz/<?php echo $item->quiz_id.'/'.$item->quiz_slug ?>.html">
-  				<a class="quiz-title" href="<?=base_url()?>quiz/<?php echo $item->quiz_id.'/'.$item->quiz_slug ?>.html?mixed=false">
+  				<a class="quiz-title" href="<?=base_url()?>quiz/<?php echo $item->quiz_id.'/'.$item->quiz_slug ?>.html">
   					<i class="fa fa-book"></i> <?php echo $item->title; ?>
   					<span class="badge">ID <?php echo $item->quiz_id; ?></span>
   				</a>
@@ -12,7 +12,7 @@
   					</span>
   					<?php if ($item->vip == 1): ?>
   						<span class="meta-user">
-                  <i class="fa fa-user"></i> Người tạo: <a href="#" onclick="InfoUser(<?php echo $item->user_id ?>)">
+                  <i class="fa fa-user"></i> Người tạo: <a href="javascript::void()" onclick="InfoUser(<?php echo $item->user_id ?>)">
                     <?php if ($item->avatar): ?>
                       <span class="icon-avt"><img class="img-responsive" src="<?=base_url().$item->avatar?>" ></span>
                     <?php endif ?>
@@ -32,9 +32,6 @@
 					</div>
   				<div class="quiz-description">
   					<span><i class="fa fa-sticky-note" style="color: #e74c3c;"></i> Mô tả: <?php echo $item->note; ?></span>
-  				</div>
-  				<div class="meta-setting">
-  					<i class="fa fa-cog"></i> Thiết lập: <input type="checkbox" name="" id="mixed-new<?php echo $item->quiz_id; ?>" onclick="mixed_qs1(<?php echo $item->quiz_id; ?>)"> Đảo câu hỏi
   				</div>
           <?php if ($item->download): ?>
               <div class="meta-download" style="margin-top: 10px;">
@@ -62,7 +59,7 @@
 	<?php foreach ($quiz_new as $key => $item): ?>
 		<?php if ($key % 2 != 0): ?>
 			<div class="quiz-item" id="item-new<?php echo $item->quiz_id;?>" data-url="<?=base_url()?>quiz/<?php echo $item->quiz_id.'/'.$item->quiz_slug ?>.html">
-  				<a class="quiz-title" href="<?=base_url()?>quiz/<?php echo $item->quiz_id.'/'.$item->quiz_slug ?>.html?mixed=false">
+  				<a class="quiz-title" href="<?=base_url()?>quiz/<?php echo $item->quiz_id.'/'.$item->quiz_slug ?>.html">
   					<i class="fa fa-book"></i> <?php echo $item->title; ?>
   					<span class="badge">ID <?php echo $item->quiz_id; ?></span>
   				</a>
@@ -72,7 +69,7 @@
   					</span>
   					<?php if ($item->vip == 1): ?>
               <span class="meta-user">
-                  <i class="fa fa-user"></i> Người tạo: <a href="#" onclick="InfoUser(<?php echo $item->user_id ?>)">
+                  <i class="fa fa-user"></i> Người tạo: <a href="javascript::void()" onclick="InfoUser(<?php echo $item->user_id ?>)">
                     <?php if ($item->avatar): ?>
                       <span class="icon-avt"><img class="img-responsive" src="<?=base_url().$item->avatar?>" ></span>
                     <?php endif ?>
@@ -92,9 +89,6 @@
 					</div>
   				<div class="quiz-description">
   					<span><i class="fa fa-sticky-note" style="color: #e74c3c;" ></i> Mô tả: <?php echo $item->note; ?></span>
-  				</div>
-  				<div class="meta-setting">
-  					<i class="fa fa-cog"></i> Thiết lập: <input type="checkbox" name="" id="mixed-new<?php echo $item->quiz_id; ?>" onclick="mixed_qs1(<?php echo $item->quiz_id; ?>)"> Đảo câu hỏi
   				</div>
           <?php if ($item->download): ?>
               <div class="meta-download" style="margin-top: 10px;">

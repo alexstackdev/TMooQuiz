@@ -14,12 +14,12 @@
 	cursor: pointer;
 }
 .true-color {
-	background-color: #5cb85c;
-	color: #fff;
+	background-color: #5cb85c !important;
+	color: #fff !important;
 }
 .false-color {
-	background-color: #d9534f;
-	color: #fff;
+	background-color: #d9534f !important;
+	color: #fff !important;
 }
 .btn-catalog {
 	margin-right: 10px;
@@ -310,10 +310,6 @@ p.question {
 li.functions {
     padding: 15px;
     font-size: 15px;
-}
-li.download a {
-	padding: 0;
-	color: #fff;
 }
 li.download button {
 	color: #fff;

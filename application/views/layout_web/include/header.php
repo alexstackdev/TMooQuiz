@@ -29,6 +29,27 @@
     <link href="<?=base_url()?>assets/web/css/style.css" rel="stylesheet">
     <link href="<?=base_url()?>assets/js/card.css" rel="stylesheet">
     <link href="<?=base_url()?>assets/fonts/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="<?=base_url()?>assets/2018/dist/css/custom.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="<?=base_url()?>assets/2018/Ionicons/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="<?=base_url()?>assets/2018/dist/css/AdminLTE.min.css">
+    <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
+          page. However, you can choose any other skin. Make sure you
+          apply the skin class to the body tag so the changes take effect. -->
+    <link rel="stylesheet" href="<?=base_url()?>assets/2018/dist/css/skins/_all-skins.min.css">
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Google Font -->
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
     <?php if (!empty($current_id)): ?>
         <script type="text/javascript">
         $(function(){
@@ -36,36 +57,9 @@
         })
         </script>
     <?php endif ?>
-    <?php if ($data_user['vip'] != 1 && isset($quiz_info['quiz_view'])): ?>
-      <!-- Popunder Code-->
-      <script type="text/javascript" data-cfasync="false">
-      /*<![CDATA[/* */
-        var _pop = _pop || [];
-        _pop.push(['siteId', 2073430]);
-        _pop.push(['minBid', 0]);
-        _pop.push(['popundersPerIP', 50]);
-        _pop.push(['delayBetween', 300]);
-        _pop.push(['default', false]);
-        _pop.push(['defaultPerDay', 0]);
-        _pop.push(['topmostLayer', false]);
-        (function() {
-          var pa = document.createElement('script'); pa.type = 'text/javascript'; pa.async = true;
-          var s = document.getElementsByTagName('script')[0]; 
-          pa.src = '//c1.popads.net/pop.js';
-          pa.onerror = function() {
-            var sa = document.createElement('script'); sa.type = 'text/javascript'; sa.async = true;
-            sa.src = '//c2.popads.net/pop.js';
-            s.parentNode.insertBefore(sa, s);
-          };
-          s.parentNode.insertBefore(pa, s);
-        })();
-      /*]]>/* */
-      </script>
-      <!-- PopAds.net Popunder Code End -->
-    <?php endif ?>
     
 </head>
-<body>
+<body class="hold-transition skin-blue sidebar-mini">
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

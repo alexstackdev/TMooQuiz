@@ -35,7 +35,7 @@
 								?>		
 								</td>
                                 <td>
-                                    <i class="<?php echo $item->icon; ?>"></i>
+                                    <?php echo $item->icon; ?>
 
                                 </td>
 								<td>

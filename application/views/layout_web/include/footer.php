@@ -6,7 +6,7 @@
         <img src="<?php echo base_url();?>uploads/quiz-loading.gif" alt="Loading" title="Loading">
     </div>
 </div>
-<footer class="footer-content">
+<footer class="footer-content ">
 	<div class="container">
 		<div class="page-info col-md-3 col-sm-6 col-xs-12">
 			<h4 class="page-header">Giới thiệu</h4>
@@ -47,6 +47,9 @@
 	</div>
 </footer>
 <script src="<?=base_url()?>assets/bootstrap/js/bootstrap.min.js"></script>
-<script src="<?=base_url()?>assets/js/card.js"></script>		
+<script src="<?=base_url()?>assets/js/card.js"></script>
+<script src="<?=base_url()?>assets/2018/dist/js/adminlte.min.js"></script>
+<script src="<?=base_url()?>assets/2018/dist/js/demo.js"></script>
+<script src="<?=base_url()?>assets/2018/dist/js/custom.js"></script>
 </body>
 </html>

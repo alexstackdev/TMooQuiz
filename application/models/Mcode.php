@@ -46,6 +46,8 @@ class Mcode extends CI_Model {
         return $cate[$id];
     }
 
+
+
     public function addHistory($type = 1,$user = null,$quiz_id = null,$content = null,$device =1){
         $data = array(
                 "user_id" => $user['user_id'],
@@ -80,6 +82,14 @@ class Mcode extends CI_Model {
         return $str;
     }
 
+    public function getAvatar($src = null){
+        if ($src){
+            echo '<img src="'.base_url().$src.'" class="img-responsive" alt="User Image">';
+        }else {
+            echo '<i class="fa fa-user"></i>';
+        }
+    }
+
     public function check_login(){
         if ($this->admin_logged_in()) {
             $ss_id = session_id();
@@ -103,6 +113,11 @@ class Mcode extends CI_Model {
         $time = (strtotime($date)-time())/(60*60*24);
         $time = round($time,0);
         return $time+1;
+    }
+
+    public function getEditQuiz($id){
+        $url = base_url().'admin/listquiz/edit/'.$id;
+        return $url;
     }
 
     public function check_vip($user)

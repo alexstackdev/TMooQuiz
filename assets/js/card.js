@@ -178,7 +178,7 @@ function active_vip(){
             }, success : function(data) {
             	try{
             		$data = $.parseJSON(data);
-	            	if ($data.code == 01) {
+	            	if ($data.code == "01") {
 	            		location.href = $data.url;
 	            	}
 	            	else {
