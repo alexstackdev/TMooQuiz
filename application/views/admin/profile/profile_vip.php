@@ -7,7 +7,7 @@ if ($time < 0) {
 ?>
 <div id="page-wrapper">
 	<div class="container-fluid">
-		<h1 class="page-header title"><span>Thông tin cá nhân</span></h2>
+		<h1 class="page-header title"><span>Thông tin cá nhân</span></h1>
 		<div class="row">
             <?php if (isset($this->session->error)): ?>
                 <div class="alert-error" style="margin-bottom: 10px;">

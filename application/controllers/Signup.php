@@ -7,7 +7,7 @@ class Signup extends Public_Controller {
     }
     public function index() {
         if ($this->mcode->admin_logged_in()) {
-            return redirect('admin', 'refresh');
+            return redirect('', 'refresh');
         }
         $this->data['cat'] = $this->db->query("SELECT * FROM category")->result();
         $this->data['quiz_info'] = array(
