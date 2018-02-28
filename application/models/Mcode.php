@@ -77,7 +77,10 @@ class Mcode extends CI_Model {
         }else {
             $d = $t/(3600*24);
             $d = round($d,0);
-            $str = "$d ngày trước";  
+            $str = "$d ngày trước";
+            if($d > 7){
+                $str = date('d/m/Y',$time);
+            }
         }
         return $str;
     }

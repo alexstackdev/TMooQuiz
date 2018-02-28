@@ -9,6 +9,7 @@ class MY_Controller extends CI_Controller {
         $this->load->library('session');
         $this->load->database();
         $this->load->model('mcode');
+        $this->load->model('category');
         $this->load->library('pagination');
         $this->load->driver('cache',array('adapter' => 'apc', 'backup' => 'file'));
         $this->load->library('user_agent');
@@ -65,6 +66,10 @@ class Admin_Controller extends MY_Controller {
     function __construct() {
         parent::__construct();
         $this->data['data_user'] = $this->_user;
+        $this->data['list_category'] = $this->category->get_list();
+        $user_id = $this->_user['user_id'];
+        $this->data['quiz'] = $this->db->query("SELECT Count(quiz_id) as total_quiz, SUM(viewed) as total_view FROM quiz WHERE user_id = $user_id")->row_array();
+
     }
     protected function render($the_view = NULL, $template = 'master') {
         parent::render($the_view, $template);

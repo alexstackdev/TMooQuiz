@@ -10,7 +10,12 @@ class Index extends Public_Controller {
     }
 
     public function baotri(){
-        $this->load->view('web/baotri');
+        if ($this->mcode->admin_logged_in()){
+            $user_id = $this->_user['user_id'];
+            $this->data['quiz'] = $this->db->query("SELECT Count(quiz_id) as total_quiz, SUM(viewed) as total_view FROM quiz WHERE user_id = $user_id")->row_array();
+        }
+
+        $this->render(null,'2018');
     }
 
     public function index() {

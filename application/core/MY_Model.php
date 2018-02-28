@@ -172,7 +172,7 @@ class MY_Model extends CI_Model {
         else
         {
             //mặc định sẽ sắp xếp theo id giảm dần
-            $this->db->order_by($this->key, 'desc');
+            $this->db->order_by($this->key, 'asc');
         }
 
         // Thêm điều kiện limit cho câu truy vấn thông qua biến $input['limit'] (ví dụ $input['limit'] = array('10' ,'0'))

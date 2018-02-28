@@ -18,7 +18,7 @@
     <script src="<?=base_url()?>assets/datatables-responsive/dataTables.responsive.js"></script>
     <script  href="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
     <!-- Custom Theme JavaScript -->
-    <script src="<?=base_url()?>assets/admin/js/admin2.js"></script>    
+    <script src="<?=base_url()?>assets/admin/js/admin2.js"></script>
     <script>
     $(document).ready(function() {
         $('#dataTables-example').DataTable({

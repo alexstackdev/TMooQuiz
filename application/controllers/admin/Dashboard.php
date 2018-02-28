@@ -30,12 +30,12 @@ class Dashboard extends Admin_Controller {
         $this->data['history_quiz'] = $history_quiz;
         $this->data['history_vip'] = $history_vip;
         $this->data['history_action'] = $history_action;
-    	$this->render('admin/dashboard','vip');
+    	$this->render('admin/dashboard','2018');
     }
 
     public function listquiz(){
     	$user_id = $this->session->user_id;
     	$this->data['quiz'] = $this->db->query("SELECT quiz.quiz_id,quiz.title,quiz.quiz_slug,quiz.viewed,quiz.created,quiz.status,category.category FROM quiz JOIN category ON quiz.category_id = category.category_id WHERE quiz.user_id = $user_id Order by quiz_id DESC")->result();
-    	$this->render('admin/quiz/listquiz_vip','vip');
+    	$this->render('admin/quiz/listquiz_vip','2018');
     }
 }

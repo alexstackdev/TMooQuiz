@@ -248,8 +248,14 @@
     <?php if ($this->agent->is_mobile()): ?>
         <?php $this->load->view('web/vip/notif_vip'); ?>
         <script>
+            var t = localStorage.getItem('time');
+
+            if(!t){
+                localStorage.setItem('time',4);
+                t = parseInt(localStorage.getItem('time'));
+            }
             var vip_s = 0
-            var time_vip = 120	;
+            var time_vip = t*30	;
             var modal_vip = setInterval(function() {
                 time_vip--;
                 if (time_vip == -1) {
@@ -258,6 +264,18 @@
                 if (vip_s == -1) {
                     if(!$('#modalCard').hasClass('in')){
                         $('#modalVip').modal('show');
+                        switch (t){
+                            case t = 4:
+                                localStorage.setItem('time',3);
+                                break;
+                            case t = 3 :
+                                localStorage.setItem('time',2);
+                                break;
+                            case t = 2 :
+                                localStorage.setItem('time',1);
+                                break;
+                            default : localStorage.setItem('time',1);
+                        }
                         clearInterval(modal_vip);
                     }else {
                         vip_s = 0;
@@ -265,7 +283,7 @@
                         modal_vip;
                     }
                 }
-                console.log(time_vip);
+                //console.log(time_vip);
             }, 1000);
         </script>
     <?php endif ?>
